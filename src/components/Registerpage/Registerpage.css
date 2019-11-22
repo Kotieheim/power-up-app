@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.Register_form {
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 300px;
+  height: 560px;
+  margin: 160px auto;
+}
+
+.Register_form input,
+label {
+  display: block;
+  margin: 12px;
+}
+input {
+  width: 240px;
+  height: 24px;
+}
+
+.Form_title {
+  font-size: 24px;
+  background-color: white;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  padding: 8px;
+  margin-bottom: 45px;
+}
+
+#Register_button {
+  display: block;
+  margin: 60px auto 0;
+  bottom: 0%;
+  font-size: 18px;
+  width: 120px;
+}

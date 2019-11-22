@@ -1,0 +1,36 @@
+.Postworkout_post {
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 500px;
+  height: auto;
+  margin: 0 auto 200px;
+}
+
+.Postworkout_title {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: white;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  padding: 8px;
+}
+
+.Exercise_list {
+  list-style: none;
+  margin: 20px 0;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.Exercise_list li {
+  padding: 3px 16px;
+}
+
+.Postworkout_post li:nth-child(odd) {
+  background-color: white;
+}
+.Individual_summary {
+  padding: 7px;
+}

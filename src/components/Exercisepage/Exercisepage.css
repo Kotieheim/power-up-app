@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.Exercise_form {
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 600px;
+  height: auto;
+  margin: 160px auto;
+}
+.Exercise_title {
+  font-size: 18px;
+  text-align: center;
+  background-color: white;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  padding: 8px;
+}
+
+.Exercise_date,
+.Exercise_summary {
+  margin: 16px;
+}

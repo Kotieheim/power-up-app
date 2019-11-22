@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "alias": "kotieheims-power-up-app",
+  "name": "power-up-ap",
+  "routes": [
+    {
+      "src": "^/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": ".*",
+      "dest": "/index.html"
+    }
+  ]
+}
