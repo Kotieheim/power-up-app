@@ -4,9 +4,9 @@ export default {
       id: "cbc787a0-ffaf-11e8-8eb2-f2801f1b9fd1",
       muscle: "Chest",
       exercise: "Bench Press",
-      sets: "3",
+      exercise_sets: "3",
       reps: "12",
-      weight: "105",
+      weight_amount: "105",
       date: "2019-01-03T00:00:00.000Z",
       summary:
         " Occaecati voluptatibus commodi et. Delectus suscipit saepe est reiciendis. Cupiditate laborum voluptatem autem explicabo voluptate. Quae et distinctio sequi dolorem temporibus aliquid."
@@ -15,9 +15,9 @@ export default {
       id: "d26e0034-ffaf-11e8-8eb2-f2801f1b9fd1",
       muscle: "Chest",
       exercise: "Incline Bench",
-      sets: "2",
+      exercise_sets: "2",
       reps: "9",
-      weight: "125",
+      weight_amount: "125",
       date: "2019-01-03T00:00:00.000Z",
       summary:
         " Occaecati voluptatibus commodi et. Delectus suscipit saepe est reiciendis. Cupiditate laborum voluptatem autem explicabo voluptate. Quae et distinctio sequi dolorem temporibus aliquid."
@@ -26,9 +26,9 @@ export default {
       id: "d26e01a6-ffaf-11e8-8eb2-f2801f1b9fd1",
       muscle: "Chest",
       exercise: "Bench fly",
-      sets: "4",
+      exercise_sets: "4",
       reps: "15",
-      weight: "115",
+      weight_amount: "115",
       date: "2019-01-03T00:00:00.000Z",
       summary:
         " Occaecati voluptatibus commodi et. Delectus suscipit saepe est reiciendis. Cupiditate laborum voluptatem autem explicabo voluptate. Quae et distinctio sequi dolorem temporibus aliquid."
@@ -37,9 +37,9 @@ export default {
       id: "d26e0570-ffaf-11e8-8eb2-f2801f1b9fd1",
       muscle: "Chest",
       exercise: "Dumbbell Press",
-      sets: "3",
+      exercise_sets: "3",
       reps: "10",
-      weight: "205",
+      weight_amount: "205",
       date: "2019-01-03T00:00:00.000Z",
       summary:
         " Occaecati voluptatibus commodi et. Delectus suscipit saepe est reiciendis. Cupiditate laborum voluptatem autem explicabo voluptate. Quae et distinctio sequi dolorem temporibus aliquid."
@@ -48,9 +48,9 @@ export default {
       id: "d26e0714-ffaf-11e8-8eb2-f2801f1b9fd1",
       muscle: "Chest",
       exercise: "Bench Press",
-      sets: "5",
+      exercise_sets: "5",
       reps: "6",
-      weight: "225",
+      weight_amount: "225",
       date: "2019-01-03T00:00:00.000Z",
       summary:
         " Occaecati voluptatibus commodi et. Delectus suscipit saepe est reiciendis. Cupiditate laborum voluptatem autem explicabo voluptate. Quae et distinctio sequi dolorem temporibus aliquid."
@@ -59,9 +59,9 @@ export default {
       id: "d26e0854-ffaf-11e8-8eb2-f2801f1b9fd1",
       muscle: "Chest",
       exercise: "Bench Press",
-      sets: "5",
+      exercise_sets: "5",
       reps: "5",
-      weight: "175",
+      weight_amount: "175",
       date: "2019-01-03T00:00:00.000Z",
       summary:
         " Occaecati voluptatibus commodi et. Delectus suscipit saepe est reiciendis. Cupiditate laborum voluptatem autem explicabo voluptate. Quae et distinctio sequi dolorem temporibus aliquid."
@@ -70,9 +70,9 @@ export default {
       id: "d26e0980-ffaf-11e8-8eb2-f2801f1b9fd1",
       muscle: "Back",
       exercise: "Deadlift",
-      sets: "6",
+      exercise_sets: "6",
       reps: "6",
-      weight: "405",
+      weight_amount: "405",
       date: "2019-01-03T00:00:00.000Z",
       summary:
         " Occaecati voluptatibus commodi et. Delectus suscipit saepe est reiciendis. Cupiditate laborum voluptatem autem explicabo voluptate. Quae et distinctio sequi dolorem temporibus aliquid."
@@ -81,9 +81,9 @@ export default {
       id: "d26e0aac-ffaf-11e8-8eb2-f2801f1b9fd1",
       muscle: "Back",
       exercise: "Pullups",
-      sets: "3",
+      exercise_sets: "3",
       reps: "12",
-      weight: "205",
+      weight_amount: "205",
       date: "2019-01-03T00:00:00.000Z",
       summary:
         " Occaecati voluptatibus commodi et. Delectus suscipit saepe est reiciendis. Cupiditate laborum voluptatem autem explicabo voluptate. Quae et distinctio sequi dolorem temporibus aliquid."
@@ -92,9 +92,9 @@ export default {
       id: "d26e0bce-ffaf-11e8-8eb2-f2801f1b9fd1",
       muscle: "Back",
       exercise: "Bent over rows",
-      sets: "4",
+      exercise_sets: "4",
       reps: "8",
-      weight: "135",
+      weight_amount: "135",
       date: "2019-01-03T00:00:00.000Z",
       summary:
         " Occaecati voluptatibus commodi et. Delectus suscipit saepe est reiciendis. Cupiditate laborum voluptatem autem explicabo voluptate. Quae et distinctio sequi dolorem temporibus aliquid."
