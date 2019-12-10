@@ -12,7 +12,7 @@ export class Landingpage extends Component {
           breaking personal records. The benefit is for both physical and mental
           health
         </p>
-        <Link to="/Exercise">
+        <Link to="/exercises">
           <button className="Landingpage__button">Let's Power-UP!</button>
         </Link>
       </div>

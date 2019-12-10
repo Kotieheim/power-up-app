@@ -1,37 +1,42 @@
-.Exercise_workout {
-  align-items: center;
+.Postworkout_post {
+  background: none;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  border: 0;
+  font-size: 14px;
+  text-decoration: none;
+  box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.7);
+  margin: 20px;
+  border-radius: 10px;
+  width: 400px;
 }
 
-.Exercise_workout input,
-.Exercise_workout label {
-  display: block;
+.Postworkout_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  background-color: white;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  padding: 8px;
 }
 
-.Exercise_workout input {
-  width: 80px;
-  height: 20px;
+.Exercise_list {
+  list-style: none;
+  margin: 20px;
+  border: 1px solid gray;
+  border-radius: 2px;
+  box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.2);
 }
-.Exercise_workout select {
-  height: 23px;
+.Exercise_list li {
+  padding: 3px 16px;
 }
-.Exercise_date input {
-  width: 120px;
+
+.Postworkout_post li:nth-child(odd) {
+  background-color: white;
 }
-.add_exercise {
-  display: block;
-  margin: 0 auto;
-}
-.workout_unit {
-  margin: 3px;
-  text-align: center;
-}
-.form_buttons {
-  text-align: center;
-}
-.Exercise_button {
-  width: 120px;
-  height: 40px;
-  margin: 6px;
+.Individual_summary {
+  padding: 7px;
+  height: 100px;
 }

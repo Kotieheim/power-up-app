@@ -8,6 +8,7 @@ import Loginpage from "../Loginpage/Loginpage";
 import Registerpage from "../Registerpage/Registerpage";
 import Exercisepage from "../Exercisepage/Exercisepage";
 import config from "../config";
+import Exerciseform from "../Exerciseform/Exerciseform";
 // import WorkoutsApiService from "../services/workouts-api-service";
 
 export class App extends Component {
@@ -82,7 +83,12 @@ export class App extends Component {
               <Route exact path={"/"} component={Landingpage} />
               <Route path="/login" component={Loginpage}></Route>
               <Route path="/register" component={Registerpage}></Route>
-              <Route path="/exercise" component={Exercisepage}></Route>
+              <Route
+                path="/exercises"
+                component={Exercisepage}
+                onClickDelete={this.deleteWorkout}
+              ></Route>
+              <Route path="/exercise_form" component={Exerciseform}></Route>
             </Switch>
           </main>
         </WorkoutsContext.Provider>

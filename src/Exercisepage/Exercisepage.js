@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Exercisepage.css";
 import PropTypes from "prop-types";
-import Postworkout from "../Postworkout/Postworkout";
-import Musclegroup from "../Musclegroup/Musclegroup";
+import { Link } from "react-router-dom";
+import Exerciseform from "../Exerciseform/Exerciseform";
 import Exerciseitem from "../ExerciseItem/Exerciseitem";
 import WorkoutsContext from "../contexts/WorkoutsContext";
 
@@ -23,13 +23,17 @@ export class Exercisepage extends Component {
     console.log(workouts);
     return (
       <div>
-        <div className="Exercise_form">
-          <Musclegroup workouts={this.state} />
-        </div>
-        {workouts.map(workout => (
-          <Exerciseitem key={workout.id} {...workout} />
-        ))}
-        {/* <Postworkout /> */}
+        <Link to="/exercise_form">
+          <button className="Exercise_form_btn">Try it out!</button>
+        </Link>
+        <section>
+          <h1 className="Demo_workouts">Demo Workouts</h1>
+          <div className="Exercise_posts">
+            {workouts.map(workout => (
+              <Exerciseitem key={workout.id} {...workout} />
+            ))}
+          </div>
+        </section>
       </div>
     );
   }

@@ -26,13 +26,15 @@ function deleteWorkoutRequest(workoutId, cb) {
     });
 }
 export default function Exerciseitem(props) {
+  let date = props.date_created,
+    work_date = new Date(date).toLocaleDateString();
   return (
     <WorkoutsContext.Consumer>
       {context => (
         <div className="Postworkout_post">
           <div className="Postworkout_title">
-            <h2>Exercises:</h2>
-            <p className="Postworkout_date">11/17/19</p>
+            <h2>Exercise date:</h2>
+            <p className="Postworkout_date">{work_date}</p>
           </div>
           <div className="Individual_workout">
             <p className="Individual_summary">{props.summary}</p>
@@ -44,6 +46,14 @@ export default function Exerciseitem(props) {
               </li>
               <li>{props.weight_amount} lbs</li>
             </ul>
+            <button
+              className="Postworkout_delete"
+              onClick={() =>
+                deleteWorkoutRequest(props.id, context.deleteWorkout)
+              }
+            >
+              Delete
+            </button>
           </div>
         </div>
       )}

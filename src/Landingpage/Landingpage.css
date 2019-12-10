@@ -1,11 +1,12 @@
 .Landingpage__main {
   display: block;
   text-align: center;
-  padding: 320px 12px 0;
+  padding: 300px 12px 0;
 }
 
 .Landingpage__main h2 {
-  font-size: 36px;
+  font-size: 42px;
+  margin-bottom: 40px;
 }
 
 .Landingpage__slogan {

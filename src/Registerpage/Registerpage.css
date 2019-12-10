@@ -5,10 +5,11 @@
 
 .Register_form {
   border: 1px solid black;
-  border-radius: 8px;
+  box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
   width: 300px;
-  height: 560px;
-  margin: 160px auto;
+  height: 460px;
+  margin: 140px auto;
 }
 
 .Register_form input,
@@ -32,8 +33,7 @@ input {
 
 #Register_button {
   display: block;
-  margin: 60px auto 0;
-  bottom: 0%;
+  margin: 26px auto;
   font-size: 18px;
   width: 120px;
 }
