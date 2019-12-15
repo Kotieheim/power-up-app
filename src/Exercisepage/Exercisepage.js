@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Exerciseitem from "../ExerciseItem/Exerciseitem";
 import WorkoutsContext from "../WorkoutsContext";
 import { findWorkout } from "../workout-helpers";
+import PropTypes from "prop-types";
 
 export default class Exercisepage extends Component {
   static defaultProps = {
@@ -22,7 +23,7 @@ export default class Exercisepage extends Component {
   render() {
     const { workoutId } = this.props.match.params;
     const workout = findWorkout(this.context.workouts, workoutId);
-    console.log(workout);
+    console.log(this.props);
     return (
       <section className="Exercisepage">
         <Exerciseitem
@@ -42,3 +43,7 @@ export default class Exercisepage extends Component {
     );
   }
 }
+
+Exercisepage.propTypes = {
+  workoutId: PropTypes.string
+};

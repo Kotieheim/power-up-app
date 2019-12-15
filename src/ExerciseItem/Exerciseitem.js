@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import config from "../config";
+import PropTypes from "prop-types";
 import WorkoutsContext from "../WorkoutsContext";
 import "./Exerciseitem.css";
 
@@ -65,4 +66,15 @@ class Exerciseitem extends Component {
   }
 }
 
-export default Exerciseitem;
+export default withRouter(Exerciseitem);
+
+Exerciseitem.propTypes = {
+  id: PropTypes.number,
+  muscle: PropTypes.string,
+  exercise: PropTypes.string,
+  exercise_sets: PropTypes.string,
+  reps: PropTypes.string,
+  weight_amount: PropTypes.string,
+  date_created: PropTypes.string,
+  summary: PropTypes.string
+};
