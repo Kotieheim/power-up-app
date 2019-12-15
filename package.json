@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "browser-router": "^0.2.0",
+    "date-fns": "^2.8.1",
     "gh-pages": "^2.1.1",
     "moment": "^2.24.0",
     "react": "^16.12.0",

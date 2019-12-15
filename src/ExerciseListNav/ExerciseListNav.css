@@ -1,0 +1,36 @@
+.ExerciseListNav__list {
+  list-style-type: none;
+  margin: 130px 0 0;
+  padding: 0;
+}
+
+.ExerciseListNav__button-wrapper {
+  margin: 0 0 0 auto;
+  max-width: 5900px;
+}
+
+.ExerciseListNav__weekday-link {
+  background-color: #ffffff;
+  color: #000000;
+  display: block;
+  font-family: var(--custom-font);
+  font-size: 20px;
+  margin: 0 0 8px auto;
+  max-width: 180px;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.ExerciseListNav__weekday-link:hover {
+  color: #ffb72f;
+  cursor: pointer;
+}
+.ExerciseListNav__weekday-link.active {
+  background-color: #102541;
+}
+
+.ExerciseListNav__num-workouts {
+  color: #000000;
+  display: block;
+  float: right;
+  font-size: 10px;
+}

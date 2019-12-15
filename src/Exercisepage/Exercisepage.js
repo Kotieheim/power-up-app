@@ -1,42 +1,44 @@
 import React, { Component } from "react";
 import "./Exercisepage.css";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import Exerciseform from "../Exerciseform/Exerciseform";
+// import Exerciseform from "../Exerciseform/Exerciseform";
 import Exerciseitem from "../ExerciseItem/Exerciseitem";
-import WorkoutsContext from "../contexts/WorkoutsContext";
+import WorkoutsContext from "../WorkoutsContext";
+import { findWorkout } from "../workout-helpers";
 
-export class Exercisepage extends Component {
-  static propTypes = {
-    workouts: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
-      })
-    )
-  };
+export default class Exercisepage extends Component {
   static defaultProps = {
-    workouts: []
+    match: {
+      params: {}
+    }
   };
+
   static contextType = WorkoutsContext;
+
+  handleDeleteWorkout = workoutId => {
+    this.props.history.push("/");
+  };
+
   render() {
-    const { workouts } = this.context;
-    console.log(workouts);
+    const { workoutId } = this.props.match.params;
+    const workout = findWorkout(this.context.workouts, workoutId);
+    console.log(workout);
     return (
-      <div>
-        <Link to="/exercise_form">
-          <button className="Exercise_form_btn">Try it out!</button>
-        </Link>
-        <section>
-          <h1 className="Demo_workouts">Demo Workouts</h1>
-          <div className="Exercise_posts">
-            {workouts.map(workout => (
-              <Exerciseitem key={workout.id} {...workout} />
-            ))}
-          </div>
-        </section>
-      </div>
+      <section className="Exercisepage">
+        <Exerciseitem
+        // id={workout.id}
+        // muscle={workout.muscle}
+        // exercise={workout.exercise}
+        // exercise_sets={workout.exercise_sets}
+        // reps={workout.reps}
+        // weight_amount={workout.weight_amount}
+        // date_created={workout.date_created}
+        // summary={workout.summary}
+        // onDeleteWorkout={this.handleDeleteWorkout}
+        />
+        <h2>Trying to get single note content to appear here</h2>
+        <div className="Exercisepage__content"></div>
+      </section>
     );
   }
 }
-
-export default Exercisepage;

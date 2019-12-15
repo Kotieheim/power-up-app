@@ -1,0 +1,13 @@
+.ExerciseList ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.ExerciseList__add-workout-button {
+  margin: 0 auto 20px;
+}
+.ExerciseList__add-workout-button:hover {
+  background-color: #29862e;
+  color: white;
+}

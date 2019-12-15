@@ -1,38 +1,11 @@
-* {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-}
-.Exercise_posts {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: space-around;
+.Exercisepage {
+  background-color: #efefef;
+  height: 100%;
+  padding: 10px;
+  width: 100%;
 }
 
-.Exercise_date,
-.Exercise_summary {
-  margin: 16px;
-}
-
-.Demo_workouts {
-  text-align: center;
-  font-size: 48px;
-  padding: 12px;
-}
-
-.Exercise_form_btn {
-  display: block;
-  font-size: 22px;
-  padding: 6px 16px;
-  margin: 30px auto 0;
-  transition: all 0.3s ease;
-}
-.Exercise_form_btn:hover {
-  cursor: pointer;
-  transition: all 0.3s ease;
-  -webkit-transform: scale(1.3);
-  -ms-transform: scale(1.3);
-  transform: scale(1.3);
+.Exercisepage__content {
+  color: #3a3939;
+  max-width: 380px;
 }

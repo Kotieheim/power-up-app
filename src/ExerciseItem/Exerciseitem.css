@@ -1,42 +1,54 @@
-.Postworkout_post {
-  background: none;
-  display: flex;
-  flex-direction: column;
+.Workout {
+  --workout-height: 88px;
+  background-color: #ffffff;
+  color: #000000;
+  height: var(--workout-height);
+  margin-bottom: 8px;
+  max-width: 590px;
+  padding: 8px 0 8px 8px;
+  position: relative;
+}
+
+.Workout__delete {
+  /* --workout-button-height: 33px;
+  background-color: #041a3a;
   border: 0;
-  font-size: 14px;
+  color: #bdbcbc;
+  float: right;
+  font-size: 12px;
+  height: var(--workout-button-height);
+  position: relative;
+  top: calc((var(--workout-button-height) + 35px) * -1);
+  transform-origin: right bottom;
+  transform: rotate(-90deg);
+  width: calc(var(--workout-height)); */
+}
+.Workout__delete:hover {
+  background-color: #bd0909;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.Workout__title {
+  font-family: var(--custom-font);
+  font-size: 20px;
+  margin: 0;
+  max-width: 80%;
+  min-height: 24px;
+}
+.Workout__title a {
+  color: #000000;
+  display: block;
   text-decoration: none;
-  box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.7);
-  margin: 20px;
-  border-radius: 10px;
-  width: 400px;
+}
+.Workout__title a:hover {
+  color: #ffb72f;
 }
 
-.Postworkout_title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 18px;
-  background-color: white;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
-  padding: 8px;
-}
-
-.Exercise_list {
-  list-style: none;
-  margin: 20px;
-  border: 1px solid gray;
-  border-radius: 2px;
-  box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.2);
-}
-.Exercise_list li {
-  padding: 3px 16px;
-}
-
-.Postworkout_post li:nth-child(odd) {
-  background-color: white;
-}
-.Individual_summary {
-  padding: 7px;
-  height: 100px;
+.Workout__dates {
+  bottom: 8px;
+  color: #a7a5a5;
+  font-size: 14px;
+  position: absolute;
 }

@@ -2,17 +2,17 @@ import React from "react";
 
 const WorkoutsContext = React.createContext({
   workouts: [],
+  weekdays: [],
   error: null,
   addWorkout: () => {},
-  deleteWorkout: () => {},
-  updateWorkout: () => {}
+  deleteWorkout: () => {}
 });
 
 export default WorkoutsContext;
 
 // export class WorkoutsProvider extends Component {
 //   state = {
-//     workouts: nullWorkouts
+//     workouts: []
 //   };
 //   setError = error => {
 //     console.error(error);

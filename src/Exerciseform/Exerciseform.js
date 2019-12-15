@@ -2,56 +2,99 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Exerciseform.css";
 import config from "../config";
+import WorkoutsContext from "../WorkoutsContext";
 
-export class Exerciseform extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+export default class Exerciseform extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {};
+  // }
 
   handleChange = e => {
     let nam = e.target.name;
     let val = e.target.value;
     this.setState({ [nam]: val });
   };
-  handleSubmit = e => {
-    e.preventDefault();
-    console.log(this.state);
-    const {
-      date,
-      muscle,
-      exercise,
-      exercise_sets,
-      reps,
-      weight_amount,
-      summary
-    } = e.target;
-    const workout = {
-      date: date.value,
-      muscle: muscle.value,
-      exercise: exercise.value,
-      exercise_sets: exercise_sets.value,
-      reps: reps.value,
-      weight_amount: weight_amount.value,
-      summary: summary.value
+
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   console.log(this.state);
+  //   const {
+  //     date,
+  //     muscle,
+  //     exercise,
+  //     exercise_sets,
+  //     reps,
+  //     weight_amount,
+  //     summary
+  //   } = e.target;
+  //   const workout = {
+  //     date: date.value,
+  //     muscle: muscle.value,
+  //     exercise: exercise.value,
+  //     exercise_sets: exercise_sets.value,
+  //     reps: reps.value,
+  //     weight_amount: weight_amount.value,
+  //     summary: summary.value
+  //   };
+  //   console.log(workout);
+  //   this.setState({ error: null });
+  //   fetch(config.API_ENDPOINT, {
+  //     method: "POST",
+  //     body: JSON.stringify(workout),
+  //     headers: {
+  //       "content-type": "application/json"
+  //     }
+  //   })
+  //     .then(res => {
+  //       if (!res.ok) {
+  //         return res.json().then(error => Promise.reject(error));
+  //       }
+  //       return res.json;
+  //     })
+  //     .then(data => {
+  //       console.log(data);
+  //     });
+  // };
+  constructor() {
+    super();
+    this.state = {
+      error: null,
+      date: "",
+      muscle: "",
+      exercise: "",
+      exercise_sets: "",
+      reps: "",
+      weight_amount: "",
+      summary: ""
     };
-    console.log(workout);
-    this.setState({ error: null });
-    fetch(config.API_ENDPOINT, {
+  }
+  handleSubmit = event => {
+    event.preventDefault();
+    this.addWorkout();
+  };
+  static contextType = WorkoutsContext;
+  addWorkout = () => {
+    const options = {
       method: "POST",
-      body: JSON.stringify(workout),
       headers: {
-        "content-type": "application/json"
-      }
-    })
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    };
+    fetch(`${config.API_ENDPOINT}`, options)
       .then(res => {
         if (!res.ok) {
-          return res.json().then(error => Promise.reject(error));
+          throw new Error("something went wrong");
         }
-        return res.json;
+        return res;
       })
+      .then(res => res.json())
       .then(data => {
-        console.log(data);
+        this.context.addWorkout(data);
+      })
+      .catch(err => {
+        this.setState({ error: err.message });
       });
   };
   render() {
@@ -146,8 +189,6 @@ export class Exerciseform extends Component {
     );
   }
 }
-
-export default Exerciseform;
 
 // date: "",
 // muscle: "",

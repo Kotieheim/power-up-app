@@ -1,100 +1,124 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Header from "../Header/Header";
-import "./App.css";
-import Landingpage from "../Landingpage/Landingpage";
-import WorkoutsContext from "../contexts/WorkoutsContext";
-import Loginpage from "../Loginpage/Loginpage";
-import Registerpage from "../Registerpage/Registerpage";
-import Exercisepage from "../Exercisepage/Exercisepage";
-import config from "../config";
-import Exerciseform from "../Exerciseform/Exerciseform";
-// import WorkoutsApiService from "../services/workouts-api-service";
 
-export class App extends Component {
+import ExerciseListNav from "../ExerciseListNav/ExerciseListNav";
+import ExercisepageNav from "../ExercisepageNav/ExercisepageNav";
+import ExerciseList from "../ExerciseList/ExerciseList";
+import Exercisepage from "../Exercisepage/Exercisepage";
+import AddExercise from "../AddExercise/AddExercise";
+import WorkoutsContext from "../WorkoutsContext";
+import config from "../config";
+import "./App.css";
+import { findWorkout, findWeekday } from "../workout-helpers";
+export default class App extends Component {
   state = {
     workouts: [],
-    error: null
+    weekdays: []
   };
+  componentDidMount() {
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/workouts`),
+      fetch(`${config.API_ENDPOINT}/weekdays`)
+    ])
+      .then(([workoutsRes, weekdaysRes]) => {
+        if (!workoutsRes.ok)
+          return workoutsRes.json().then(e => Promise.reject(e));
+        if (!weekdaysRes.ok)
+          return weekdaysRes.json().then(e => Promise.reject(e));
 
-  setWorkout = workouts => {
-    this.setState({
-      workouts,
-      error: null
-    });
-  };
-  addWorkout = workout => {
+        return Promise.all([workoutsRes.json(), weekdaysRes.json()]);
+      })
+      .then(([workouts, weekdays]) => {
+        this.setState({ workouts, weekdays });
+      })
+      .catch(error => {
+        console.error({ error });
+      });
+  }
+  handleAddWorkout = workout => {
     this.setState({
       workouts: [...this.state.workouts, workout]
     });
   };
-  deleteWorkout = workoutId => {
-    const newWorkout = this.state.workouts.filter(
-      work => work.id !== workoutId
+  handleDeleteWorkout = workoutId => {
+    this.setState({
+      workouts: this.state.workouts.filter(workout => workout.id !== workoutId)
+    });
+  };
+  renderNavRoutes() {
+    const { workouts, weekdays } = this.state;
+    return (
+      <div>
+        {["/", "/weekdays/:weekdayId"].map(path => (
+          <Route exact key={path} path={path} component={ExerciseListNav} />
+        ))}
+        <Route
+          path="/workouts/:workoutId"
+          render={routeProps => {
+            const { workoutId } = routeProps.match.params;
+            const workout = findWorkout(workouts, workoutId) || {};
+            const weekday = findWeekday(weekdays, workout.weekdayId);
+            return <ExercisepageNav {...routeProps} weekday={weekday} />;
+          }}
+        />
+      </div>
+      //   <>
+      //     {["/", "/weekdays/:weekdayId"].map(path => (
+      //       <Route exact key={path} path={path} component={ExerciseListNav} />
+      //     ))}
+      //     <Route path="/workouts/:workoutId" component={ExercisepageNav} />
+      //     <Route path="/add-workout" component={ExercisepageNav} />
+      //   </>
     );
-    this.setState({
-      workouts: newWorkout
-    });
-  };
-  updateWorkout = updatedWorkout => {
-    this.setState({
-      workouts: this.state.workouts.map(work =>
-        work.id !== updatedWorkout.id ? work : updatedWorkout
-      )
-    });
-  };
-  componentDidMount() {
-    fetch(`${config.API_ENDPOINT}`, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json"
-      }
-    })
-      .then(res => {
-        if (!res.ok) {
-          return res.json().then(error => Promise.reject(error));
-        }
-        return res.json();
-      })
-      .then(this.setWorkout)
-      .catch(error => {
-        console.error(error);
-        this.setState({ error });
-      });
+  }
+  renderMainRoutes() {
+    return (
+      <>
+        {["/", "/weekdays/:weekdayId"].map(path => (
+          <Route
+            exact
+            key={path}
+            path={path}
+            render={routeProps => {
+              return <ExerciseList {...routeProps} />;
+            }}
+          />
+        ))}
+        <Route
+          path="/workouts/:workoutId"
+          render={routeProps => {
+            return <Exercisepage {...routeProps} />;
+          }}
+        />
+        <Route path="/add-workout" component={AddExercise} />
+      </>
+      // <>
+      //   {["/", "/weekdays/:weekdayId"].map(path => (
+      //     <Route exact key={path} path={path} component={ExerciseList} />
+      //   ))}
+      //   <Route path="/workouts/:workoutId" component={Exercisepage} />
+      //   <Route path="/add-workout" component={AddExercise} />
+      // </>
+    );
   }
   render() {
     const contextValue = {
       workouts: this.state.workouts,
+      weekdays: this.state.weekdays,
       addWorkout: this.addWorkout,
-      deleteWorkout: this.deleteWorkout,
-      updateWorkout: this.updateWorkout
+      deleteWorkout: this.deleteWorkout
     };
     return (
-      <div className="App">
-        <WorkoutsContext.Provider value={contextValue}>
+      <WorkoutsContext.Provider value={contextValue}>
+        <div className="App">
+          <nav className="App__nav">{this.renderNavRoutes()}</nav>
           <header className="App__header">
             <Header />
           </header>
-          <main className="App_main">
-            {this.state.hasError && (
-              <p classname="error_text">An error has occurred</p>
-            )}
-            <Switch>
-              <Route exact path={"/"} component={Landingpage} />
-              <Route path="/login" component={Loginpage}></Route>
-              <Route path="/register" component={Registerpage}></Route>
-              <Route
-                path="/exercises"
-                component={Exercisepage}
-                onClickDelete={this.deleteWorkout}
-              ></Route>
-              <Route path="/exercise_form" component={Exerciseform}></Route>
-            </Switch>
-          </main>
-        </WorkoutsContext.Provider>
-      </div>
+          <main className="App__main">{this.renderMainRoutes()}</main>
+        </div>
+      </WorkoutsContext.Provider>
     );
   }
 }
-
-export default App;

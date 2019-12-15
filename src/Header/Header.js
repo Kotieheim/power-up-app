@@ -6,9 +6,6 @@ export class Header extends Component {
   renderLoginLink() {
     return (
       <div className="Header__not-logged-in">
-        <Link className="Header_demo" to="/exercises">
-          Demo
-        </Link>
         <Link className="Header_login" to="/login">
           Log in
         </Link>

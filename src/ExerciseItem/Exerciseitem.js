@@ -1,85 +1,68 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import config from "../config";
-import WorkoutsContext from "../contexts/WorkoutsContext";
+import WorkoutsContext from "../WorkoutsContext";
 import "./Exerciseitem.css";
 
-function deleteWorkoutRequest(workoutId, cb) {
-  fetch(config.API_ENDPOINT + `/${workoutId}`, {
-    method: "DELETE",
-    headers: {
-      "content-type": "application/json"
-    }
-  })
-    .then(res => {
-      if (!res.ok) {
-        return res.json().then(error => Promise.reject(error));
+class Exerciseitem extends Component {
+  static defaultProps = {
+    onDeleteNote: () => {}
+  };
+  static contextType = WorkoutsContext;
+
+  handleClickDelete = e => {
+    e.preventDefault();
+    const workoutId = this.props.id;
+
+    fetch(`${config.API_ENDPOINT}/workouts/${workoutId}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json"
       }
-      return res.json();
     })
-    .then(data => {
-      cb(workoutId);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-export default function Exerciseitem(props) {
-  let date = props.date_created,
-    work_date = new Date(date).toLocaleDateString();
-  return (
-    <WorkoutsContext.Consumer>
-      {context => (
-        <div className="Postworkout_post">
-          <div className="Postworkout_title">
-            <h2>Exercise date:</h2>
-            <p className="Postworkout_date">{work_date}</p>
+      .then(res => {
+        if (!res.ok) return res.json().then(e => Promise.reject(e));
+        return res.json();
+      })
+      .then(() => {
+        this.context.deleteWorkout(workoutId);
+        this.props.onDeleteNote(workoutId);
+      })
+      .catch(error => {
+        console.error({ error });
+      });
+  };
+  render() {
+    const {
+      id,
+      muscle,
+      exercise,
+      exercise_sets,
+      reps,
+      weight_amount,
+      date_created,
+      summary
+    } = this.props;
+    return (
+      <div className="Workout">
+        <h2 className="Workout__title">
+          <Link to={`/workouts/${id}`}>{muscle}</Link>
+          <button
+            className="Workout__delete"
+            type="button"
+            onClick={this.handleClickDelete}
+          >
+            remove
+          </button>
+          <div className="Workout__dates">
+            <div className="Workout__dates-modified">
+              date <span>{date_created}</span>
+            </div>
           </div>
-          <div className="Individual_workout">
-            <p className="Individual_summary">{props.summary}</p>
-            <ul className="Exercise_list">
-              <li>{props.muscle}</li>
-              <li>{props.exercise}</li>
-              <li>
-                {props.exercise_sets} x {props.reps}
-              </li>
-              <li>{props.weight_amount} lbs</li>
-            </ul>
-            <button
-              className="Postworkout_delete"
-              onClick={() =>
-                deleteWorkoutRequest(props.id, context.deleteWorkout)
-              }
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      )}
-    </WorkoutsContext.Consumer>
-  );
+        </h2>
+      </div>
+    );
+  }
 }
 
-Exerciseitem.defaultProps = {
-  onClickDelete: () => {}
-};
-
-Exerciseitem.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  muscle: PropTypes.string.isRequired,
-  exercise: PropTypes.string.isRequired,
-  exercise_sets: PropTypes.string.isRequired,
-  reps: PropTypes.string.isRequired,
-  weight_amount: PropTypes.string.isRequired,
-  summary: PropTypes.string
-};
-
-// date_created: "2019-12-03T16:04:27.247Z"
-// exercise: "Bench Press"
-// exercise_sets: "3"
-// id: 1
-// muscle: "Chest"
-// reps: "12"
-// summary: "Occaecati voluptatibus commodi et. Delectus suscipit saepe est reiciendis. Cupiditate laborum voluptatem autem explicabo voluptate. Quae et distinctio sequi dolorem temporibus aliquid."
-// weight_amount: "105"
+export default Exerciseitem;
