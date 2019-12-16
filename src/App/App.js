@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Link, withRouter } from "react-router-dom";
 import Header from "../Header/Header";
 
 import ExerciseListNav from "../ExerciseListNav/ExerciseListNav";
@@ -11,7 +11,7 @@ import WorkoutsContext from "../WorkoutsContext";
 import config from "../config";
 import "./App.css";
 import { findWorkout, findWeekday } from "../workout-helpers";
-export default class App extends Component {
+class App extends Component {
   state = {
     workouts: [],
     weekdays: []
@@ -26,10 +26,10 @@ export default class App extends Component {
           return workoutsRes.json().then(e => Promise.reject(e));
         if (!weekdaysRes.ok)
           return weekdaysRes.json().then(e => Promise.reject(e));
-
         return Promise.all([workoutsRes.json(), weekdaysRes.json()]);
       })
       .then(([workouts, weekdays]) => {
+        console.log(workouts, weekdays);
         this.setState({ workouts, weekdays });
       })
       .catch(error => {
@@ -81,6 +81,7 @@ export default class App extends Component {
             key={path}
             path={path}
             render={routeProps => {
+              console.log(routeProps);
               return <ExerciseList {...routeProps} />;
             }}
           />
@@ -103,14 +104,15 @@ export default class App extends Component {
     );
   }
   render() {
-    const contextValue = {
-      workouts: this.state.workouts,
-      weekdays: this.state.weekdays,
-      addWorkout: this.addWorkout,
-      deleteWorkout: this.deleteWorkout
-    };
     return (
-      <WorkoutsContext.Provider value={contextValue}>
+      <WorkoutsContext.Provider
+        value={{
+          workouts: this.state.workouts,
+          weekdays: this.state.weekdays,
+          addWorkout: this.addWorkout,
+          deleteWorkout: this.deleteWorkout
+        }}
+      >
         <div className="App">
           <nav className="App__nav">{this.renderNavRoutes()}</nav>
           <header className="App__header">
@@ -122,3 +124,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default withRouter(App);

@@ -6,48 +6,12 @@ import WorkoutsContext from "../WorkoutsContext";
 import "./Exerciseitem.css";
 
 class Exerciseitem extends Component {
-  static defaultProps = {
-    onDeleteNote: () => {}
-  };
   static contextType = WorkoutsContext;
-
-  handleClickDelete = e => {
-    e.preventDefault();
-    const workoutId = this.props.id;
-
-    fetch(`${config.API_ENDPOINT}/workouts/${workoutId}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json"
-      }
-    })
-      .then(res => {
-        if (!res.ok) return res.json().then(e => Promise.reject(e));
-        return res.json();
-      })
-      .then(() => {
-        this.context.deleteWorkout(workoutId);
-        this.props.onDeleteNote(workoutId);
-      })
-      .catch(error => {
-        console.error({ error });
-      });
-  };
   render() {
-    const {
-      id,
-      muscle,
-      exercise,
-      exercise_sets,
-      reps,
-      weight_amount,
-      date_created,
-      summary
-    } = this.props;
     return (
       <div className="Workout">
         <h2 className="Workout__title">
-          <Link to={`/workouts/${id}`}>{muscle}</Link>
+          <Link to={`/workouts/${this.props.id}`}>{this.props.muscle}</Link>
           <button
             className="Workout__delete"
             type="button"
@@ -57,7 +21,7 @@ class Exerciseitem extends Component {
           </button>
           <div className="Workout__dates">
             <div className="Workout__dates-modified">
-              date <span>{date_created}</span>
+              date <span>{this.props.date_created}</span>
             </div>
           </div>
         </h2>
@@ -69,7 +33,7 @@ class Exerciseitem extends Component {
 export default withRouter(Exerciseitem);
 
 Exerciseitem.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   muscle: PropTypes.string,
   exercise: PropTypes.string,
   exercise_sets: PropTypes.string,
