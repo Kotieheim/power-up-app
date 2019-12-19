@@ -4,10 +4,10 @@ export const findWeekday = (weekdays = [], weekdayId) =>
 export const getWorkoutsForWeekdays = (workouts = [], weekdayId) =>
   !weekdayId
     ? workouts
-    : workouts.filter(workout => workout.weekdayId === weekdayId);
+    : workouts.filter(workout => workout.weekday === weekdayId);
 
 export const countWorkoutsForWeekdays = (workouts = [], weekdayId) =>
-  workouts.filter(workout => workout.weekdayId === weekdayId).length;
+  workouts.filter(workout => workout.weekday === weekdayId).length;
 
 export const findWorkout = (workouts = [], workoutId) =>
   workouts.find(workout => workout.id === workoutId);

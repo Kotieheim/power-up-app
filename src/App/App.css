@@ -10,7 +10,7 @@
 }
 
 .App__nav {
-  background-color: #000000;
+  background-color: #eeeeee;
   color: #fff;
   grid-area: sidebar;
   height: 100vh;
@@ -18,7 +18,7 @@
 }
 
 .App__header {
-  background-color: #333333;
+  background-color: #eeeeee;
   color: #bdbdbd;
   font-family: var(--custom-font);
   grid-area: header;
@@ -32,8 +32,12 @@
 }
 
 .App__main {
-  background-color: #000000;
+  background-color: #949494;
   grid-area: main;
   height: calc(100vh - 120px);
   overflow: auto;
+}
+
+.ExerciseList_add {
+  background-color: black;
 }

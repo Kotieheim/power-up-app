@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import Exerciseitem from "../ExerciseItem/Exerciseitem";
 import WorkoutsContext from "../WorkoutsContext";
 import { getWorkoutsForWeekdays } from "../workout-helpers";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./ExerciseList.css";
 
 export default class ExerciseList extends Component {
+  static defaultProps = {
+    onDeleteWorkout: () => {}
+  };
   static contextType = WorkoutsContext;
   render() {
     const { weekdayId } = this.props.match.params;
@@ -20,20 +23,20 @@ export default class ExerciseList extends Component {
                   id={workout.id}
                   muscle={workout.muscle}
                   date_created={workout.date_created}
+                  handleDelete={this.context.handleDelete}
                 />
               </li>
             )
           )}
         </ul>
         <div className="ExerciseList__button">
-          <button
-            tag={Link}
+          <NavLink
             to="/add-workout"
             type="button"
             className="ExerciseList__add-workout-button"
           >
             Add Workout
-          </button>
+          </NavLink>
         </div>
       </section>
     );

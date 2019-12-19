@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { Route, Link, withRouter } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter as Router,
+  withRouter,
+  Switch
+} from "react-router-dom";
 import Header from "../Header/Header";
 
 import ExerciseListNav from "../ExerciseListNav/ExerciseListNav";
@@ -49,7 +54,7 @@ class App extends Component {
   renderNavRoutes() {
     const { workouts, weekdays } = this.state;
     return (
-      <div>
+      <>
         {["/", "/weekdays/:weekdayId"].map(path => (
           <Route exact key={path} path={path} component={ExerciseListNav} />
         ))}
@@ -62,65 +67,54 @@ class App extends Component {
             return <ExercisepageNav {...routeProps} weekday={weekday} />;
           }}
         />
-      </div>
-      //   <>
-      //     {["/", "/weekdays/:weekdayId"].map(path => (
-      //       <Route exact key={path} path={path} component={ExerciseListNav} />
-      //     ))}
-      //     <Route path="/workouts/:workoutId" component={ExercisepageNav} />
-      //     <Route path="/add-workout" component={ExercisepageNav} />
-      //   </>
+      </>
     );
   }
   renderMainRoutes() {
     return (
       <>
-        {["/", "/weekdays/:weekdayId"].map(path => (
+        <Switch>
+          {["/", "/weekdays/:weekdayId"].map(path => (
+            <Route
+              exact
+              key={path}
+              path={path}
+              render={routeProps => {
+                return <ExerciseList {...routeProps} />;
+              }}
+            />
+          ))}
           <Route
-            exact
-            key={path}
-            path={path}
+            path="/workouts/:workoutId"
             render={routeProps => {
-              console.log(routeProps);
-              return <ExerciseList {...routeProps} />;
+              return <Exercisepage {...routeProps} />;
             }}
           />
-        ))}
-        <Route
-          path="/workouts/:workoutId"
-          render={routeProps => {
-            return <Exercisepage {...routeProps} />;
-          }}
-        />
-        <Route path="/add-workout" component={AddExercise} />
+          <Route path="/add-workout" component={AddExercise} />
+        </Switch>
       </>
-      // <>
-      //   {["/", "/weekdays/:weekdayId"].map(path => (
-      //     <Route exact key={path} path={path} component={ExerciseList} />
-      //   ))}
-      //   <Route path="/workouts/:workoutId" component={Exercisepage} />
-      //   <Route path="/add-workout" component={AddExercise} />
-      // </>
     );
   }
   render() {
     return (
-      <WorkoutsContext.Provider
-        value={{
-          workouts: this.state.workouts,
-          weekdays: this.state.weekdays,
-          addWorkout: this.addWorkout,
-          deleteWorkout: this.deleteWorkout
-        }}
-      >
-        <div className="App">
-          <nav className="App__nav">{this.renderNavRoutes()}</nav>
-          <header className="App__header">
-            <Header />
-          </header>
-          <main className="App__main">{this.renderMainRoutes()}</main>
-        </div>
-      </WorkoutsContext.Provider>
+      <Router>
+        <WorkoutsContext.Provider
+          value={{
+            workouts: this.state.workouts,
+            weekdays: this.state.weekdays,
+            handleAddWorkout: this.handleAddWorkout,
+            handleDelete: this.handleDeleteWorkout
+          }}
+        >
+          <div className="App">
+            <nav className="App__nav">{this.renderNavRoutes()}</nav>
+            <header className="App__header">
+              <Header />
+            </header>
+            <main className="App__main">{this.renderMainRoutes()}</main>
+          </div>
+        </WorkoutsContext.Provider>
+      </Router>
     );
   }
 }

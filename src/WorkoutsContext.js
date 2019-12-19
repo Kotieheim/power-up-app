@@ -4,8 +4,8 @@ const WorkoutsContext = React.createContext({
   workouts: [],
   weekdays: [],
   error: null,
-  addWorkout: () => {},
-  deleteWorkout: () => {}
+  handleAddWorkout: () => {},
+  handleDelete: () => {}
 });
 
 export default WorkoutsContext;

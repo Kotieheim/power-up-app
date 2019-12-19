@@ -8,10 +8,10 @@ export default class ExerciseListNav extends Component {
   static contextType = WorkoutsContext;
   render() {
     const { weekdays = [] } = this.context;
+    console.log(weekdays);
 
     return (
       <div className="ExerciseListNav">
-        <h2>HEY MAN</h2>
         <ul className="ExerciseListNav__list">
           {weekdays.map(weekday => (
             <li key={weekday.id}>
@@ -19,7 +19,7 @@ export default class ExerciseListNav extends Component {
                 className="ExerciseListNav__weekday-link"
                 to={`/weekdays/${weekday.id}`}
               >
-                {weekday.weekday_name}
+                {weekday.name}
               </NavLink>
             </li>
           ))}
@@ -28,3 +28,31 @@ export default class ExerciseListNav extends Component {
     );
   }
 }
+
+// import React from "react";
+// import WorkoutsContext from "../WorkoutsContext";
+// import { NavLink } from "react-router-dom";
+
+// export default function ExerciseListNav() {
+//   return (
+//     <WorkoutsContext.Consumer>
+//       {({ workouts, weekdays }) => (
+//         <div className="ExerciseListNav">
+//           <ul className="ExerciseListNav__list">
+//             {weekdays.map(weekday => (
+//               <li key={weekday.name}>
+//                 <NavLink
+//                   key={weekday.id}
+//                   className="ExerciseListNav__weekday-link"
+//                   to={`/weekdays/${weekday.id}`}
+//                 >
+//                   {weekday.name}
+//                 </NavLink>
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+//       )}
+//     </WorkoutsContext.Consumer>
+//   );
+// }

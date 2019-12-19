@@ -4,10 +4,16 @@
   padding: 10px;
 }
 
-.ExerciseList__add-workout-button {
+.ExerciseList__button {
   margin: 0 auto 20px;
 }
-.ExerciseList__add-workout-button:hover {
-  background-color: #29862e;
+.ExerciseList__add-workout-button {
+  display: block;
+  width: 120px;
+  margin: 0 auto;
+  text-decoration: none;
+  border: 1px solid gray;
+  border-radius: 3px;
+  padding: 3px;
   color: white;
 }

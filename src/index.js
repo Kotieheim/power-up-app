@@ -5,14 +5,9 @@ import "./index.css";
 import App from "./App/App";
 // import { WorkoutsListProvider } from "./contexts/WorkoutsListContext";
 // import { WorkoutsProvider } from "./contexts/WorkoutsContext";
-
 ReactDOM.render(
   <BrowserRouter>
-    {/* <WorkoutsListProvider>
-      <WorkoutsProvider> */}
     <App />
-    {/* </WorkoutsProvider>
-    </WorkoutsListProvider> */}
   </BrowserRouter>,
   document.getElementById("root")
 );
