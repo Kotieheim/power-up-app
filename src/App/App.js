@@ -3,9 +3,9 @@ import {
   Route,
   BrowserRouter as Router,
   withRouter,
-  Switch
+  Switch,
+  Link
 } from "react-router-dom";
-import Header from "../Header/Header";
 
 import ExerciseListNav from "../ExerciseListNav/ExerciseListNav";
 import ExercisepageNav from "../ExercisepageNav/ExercisepageNav";
@@ -55,6 +55,9 @@ class App extends Component {
     const { workouts, weekdays } = this.state;
     return (
       <>
+        <h1 className="App__title">
+          <Link to="/">Power-Up!</Link>
+        </h1>
         {["/", "/weekdays/:weekdayId"].map(path => (
           <Route exact key={path} path={path} component={ExerciseListNav} />
         ))}
@@ -109,7 +112,10 @@ class App extends Component {
           <div className="App">
             <nav className="App__nav">{this.renderNavRoutes()}</nav>
             <header className="App__header">
-              <Header />
+              <p>
+                View all workouts logged, or sort by days of the week to see
+                which workouts performed on which day!
+              </p>
             </header>
             <main className="App__main">{this.renderMainRoutes()}</main>
           </div>

@@ -15,6 +15,13 @@ export default class ExerciseList extends Component {
     const { weekdayId } = this.props.match.params;
     return (
       <section className="ExerciseList">
+        <NavLink
+          to="/add-workout"
+          type="button"
+          className="ExerciseList__add-workout-button"
+        >
+          Add Workout
+        </NavLink>
         <ul>
           {getWorkoutsForWeekdays(this.context.workouts, weekdayId).map(
             workout => (
@@ -30,13 +37,13 @@ export default class ExerciseList extends Component {
           )}
         </ul>
         <div className="ExerciseList__button">
-          <NavLink
+          {/* <NavLink
             to="/add-workout"
             type="button"
             className="ExerciseList__add-workout-button"
           >
             Add Workout
-          </NavLink>
+          </NavLink> */}
         </div>
       </section>
     );

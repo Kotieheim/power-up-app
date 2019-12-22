@@ -26,7 +26,7 @@ export default class ExercisepageNav extends Component {
           onClick={() => this.props.history.goBack()}
           className="ExercisePageNav__back-button"
         >
-          Backwards
+          Go back
         </button>
         {weekday && (
           <h3 classname="ExercisePageNav__weekday-name">

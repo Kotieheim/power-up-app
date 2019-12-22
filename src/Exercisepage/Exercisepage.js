@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import "./Exercisepage.css";
 import Exerciseitem from "../ExerciseItem/Exerciseitem";
 import WorkoutsContext from "../WorkoutsContext";
@@ -16,6 +17,7 @@ export default class Exercisepage extends Component {
     if (workout === undefined) {
       return null;
     }
+    console.log(workout);
     return (
       <section className="Exercisepage">
         <Exerciseitem
@@ -24,8 +26,22 @@ export default class Exercisepage extends Component {
           summary={workout.summary}
           onDeleteWorkout={this.handleDelete}
         />
-        <h2>{workout.summary}</h2>
-        <div className="Exercisepage__content"></div>
+        <h1>{workout.exercise}</h1>
+        <ul className="Exercisepage__list-workout">
+          <li className="item-of-interest">{workout.exercise_sets}</li>
+          <li>X</li>
+          <li className="item-of-interest">{workout.reps}</li>
+          <li>at</li>
+          <li className="item-of-interest">{workout.weight_amount}lbs</li>
+        </ul>
+        <h2 className="Exercisepage__summary">{workout.summary}</h2>
+        <NavLink
+          to="/add-workout"
+          type="button"
+          className="ExerciseList__add-workout-button"
+        >
+          Add Workout
+        </NavLink>
       </section>
     );
   }

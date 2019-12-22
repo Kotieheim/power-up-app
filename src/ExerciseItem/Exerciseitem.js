@@ -4,7 +4,7 @@ import config from "../config";
 import PropTypes from "prop-types";
 import WorkoutsContext from "../WorkoutsContext";
 import "./Exerciseitem.css";
-
+import Moment from "moment";
 class Exerciseitem extends Component {
   static defaultProps = {
     onDeleteWorkout: () => {}
@@ -23,11 +23,11 @@ class Exerciseitem extends Component {
       }
     })
       .then(res => {
-        console.log(res.json(), workoutId);
+        console.log(res, workoutId);
         if (!res.ok) {
-          return res.json().then(err => Promise.reject(err));
+          return res.then(err => Promise.reject(err));
         }
-        return res.json();
+        return res;
       })
       .then(() => {
         this.context.handleDelete(workoutId);
@@ -39,25 +39,30 @@ class Exerciseitem extends Component {
   };
   static contextType = WorkoutsContext;
   render() {
-    let date = new Date().toLocaleDateString("en-Us", this.props.date_created);
+    Moment.locale("en");
+    let date = this.props.date_created;
     return (
-      <div className="Workout">
-        <h2 className="Workout__title">
-          <Link to={`/workouts/${this.props.id}`}>{this.props.muscle}</Link>
-          <button
-            className="Workout__delete"
-            type="button"
-            onClick={this.handleClickDelete}
-          >
-            remove
-          </button>
-          <div className="Workout__dates">
-            <div className="Workout__dates-modified">
-              Date: <span>{date}</span>
-            </div>
+      <>
+        <Link className="Workouts__link-box" to={`/workouts/${this.props.id}`}>
+          <div className="Workout">
+            <h2 className="Workout__title">
+              {this.props.muscle}
+              <div className="Workout__dates">
+                <div className="Workout__dates-modified">
+                  Date: <span>{Moment(date).format("LLLL")}</span>
+                </div>
+              </div>
+            </h2>
+            <button
+              className="Workout__delete"
+              type="button"
+              onClick={this.handleClickDelete}
+            >
+              Remove workout
+            </button>
           </div>
-        </h2>
-      </div>
+        </Link>
+      </>
     );
   }
 }
