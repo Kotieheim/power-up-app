@@ -19,7 +19,7 @@ import { findWorkout, findWeekday } from "../workout-helpers";
 import weekdaysStore from "../Weekdays-store";
 import Footer from "../Footer/Footer";
 
-console.log(weekdaysStore);
+console.log(process.env.REACT_APP_API_ENDPOINT);
 
 class App extends Component {
   state = {
@@ -58,7 +58,6 @@ class App extends Component {
   //     });
   // }
   componentDidMount() {
-    console.log(this.state);
     fetch(`${config.API_ENDPOINT}/workouts`, {
       headers: {
         Authorization: `Bearer ${config.API_KEY}`,
