@@ -19,6 +19,7 @@ class Exerciseitem extends Component {
     fetch(`${config.API_ENDPOINT}/workouts/${workoutId}`, {
       method: "DELETE",
       headers: {
+        Authorization: `Bearer ${config.API_KEY}`,
         "content-type": "application/json"
       }
     })

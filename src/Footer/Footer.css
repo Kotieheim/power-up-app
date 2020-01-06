@@ -1,0 +1,24 @@
+.footer__phantom-div {
+  display: block;
+  padding: 20px;
+  height: 50px;
+  width: 100%;
+}
+.footer__style {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(252, 249, 249);
+  border-top: 1px solid #e7e7e7;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+}
+
+.footer__style li {
+  list-style: none;
+}

@@ -13,6 +13,7 @@ export default class Exercisepage extends Component {
   };
   render() {
     const { workoutId } = this.props.match.params;
+    console.log(this.props.match);
     const workout = findWorkout(this.context.workouts, workoutId);
     if (workout === undefined) {
       return null;

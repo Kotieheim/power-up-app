@@ -1,3 +1,80 @@
 .AddWorkout {
   color: #dedede;
+  text-align: center;
+  padding: 8px 10%;
+}
+.AddWorkout h2 {
+  font-size: 36px;
+}
+.Workout-form {
+  background-color: white;
+  box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 16px 0;
+}
+.form__container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.field {
+  display: block;
+  text-align: left;
+  width: 200px;
+  padding: 5px 8px;
+  margin: 5px;
+  text-align: center;
+  margin: 10px auto;
+  border: 1px solid rgba(102, 102, 102, 0.2);
+  border-radius: 5px;
+  box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.7);
+}
+
+.field input,
+.field label,
+.form_summary textarea,
+.form_summary label {
+  display: block;
+  text-align: center;
+}
+
+.form_summary textarea {
+  margin: 0 auto;
+  width: 300px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.field input {
+  border-radius: 2px;
+}
+
+.field label,
+.form_summary label {
+  font-size: 22px;
+  color: black;
+}
+
+.Workout-form button {
+  display: block;
+  width: 120px;
+  margin: 28px auto 0;
+  text-decoration: none;
+  border: 1px solid gray;
+  border-radius: 3px;
+  padding: 8px;
+  background-color: white;
+  color: black;
+  box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.Workout-form button:hover {
+  background-color: gray;
 }

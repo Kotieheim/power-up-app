@@ -15,47 +15,6 @@ export default class Exerciseform extends Component {
     let val = e.target.value;
     this.setState({ [nam]: val });
   };
-
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   console.log(this.state);
-  //   const {
-  //     date,
-  //     muscle,
-  //     exercise,
-  //     exercise_sets,
-  //     reps,
-  //     weight_amount,
-  //     summary
-  //   } = e.target;
-  //   const workout = {
-  //     date: date.value,
-  //     muscle: muscle.value,
-  //     exercise: exercise.value,
-  //     exercise_sets: exercise_sets.value,
-  //     reps: reps.value,
-  //     weight_amount: weight_amount.value,
-  //     summary: summary.value
-  //   };
-  //   console.log(workout);
-  //   this.setState({ error: null });
-  //   fetch(config.API_ENDPOINT, {
-  //     method: "POST",
-  //     body: JSON.stringify(workout),
-  //     headers: {
-  //       "content-type": "application/json"
-  //     }
-  //   })
-  //     .then(res => {
-  //       if (!res.ok) {
-  //         return res.json().then(error => Promise.reject(error));
-  //       }
-  //       return res.json;
-  //     })
-  //     .then(data => {
-  //       console.log(data);
-  //     });
-  // };
   constructor() {
     super();
     this.state = {
@@ -78,6 +37,7 @@ export default class Exerciseform extends Component {
     const options = {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${config.API_KEY}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(this.state)

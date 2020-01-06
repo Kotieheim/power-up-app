@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Exerciseitem from "../ExerciseItem/Exerciseitem";
 import WorkoutsContext from "../WorkoutsContext";
 import { getWorkoutsForWeekdays } from "../workout-helpers";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./ExerciseList.css";
 
@@ -13,6 +13,7 @@ export default class ExerciseList extends Component {
   static contextType = WorkoutsContext;
   render() {
     const { weekdayId } = this.props.match.params;
+    console.log(weekdayId);
     return (
       <section className="ExerciseList">
         <NavLink
@@ -32,6 +33,7 @@ export default class ExerciseList extends Component {
                   date_created={workout.date_created}
                   handleDelete={this.context.handleDelete}
                 />
+                {/* {console.log(weekdayId)} taken out of workoutforweekday params*/}
               </li>
             )
           )}

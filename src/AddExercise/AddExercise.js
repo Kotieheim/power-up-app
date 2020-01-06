@@ -6,19 +6,6 @@ import config from "../config";
 import PropTypes from "prop-types";
 
 export default class AddExercise extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     error: null,
-  //     id: "",
-  //     muscle: "",
-  //     exercise: "",
-  //     exercise_sets: "",
-  //     reps: "",
-  //     weight_amount: "",
-  //     summary: "",
-  //   };
-  // }
   static propTypes = {
     history: PropTypes.shape({
       push: PropTypes.func
@@ -56,6 +43,7 @@ export default class AddExercise extends Component {
       method: "POST",
       body: JSON.stringify(workout),
       headers: {
+        Authorization: `Bearer ${config.API_KEY}`,
         "content-type": "application/json"
       }
     })
@@ -89,43 +77,50 @@ export default class AddExercise extends Component {
         <section className="AddWorkout">
           <h2>Add a workout</h2>
           <WorkoutForm onSubmit={this.handleSubmit}>
-            <div className="field">
+            <div className="form_summary">
               <label htmlFor="summary-input">Summary of workout</label>
               <textarea type="text" id="summary-input" name="summary" />
             </div>
-            <div className="field">
-              <label htmlFor="muscle-input">Muscle</label>
-              <input type="text" id="muscle-input" name="muscle" required />
-            </div>
+            <div className="form__container">
+              <div className="field">
+                <label htmlFor="muscle-input">Muscle</label>
+                <input type="text" id="muscle-input" name="muscle" required />
+              </div>
 
-            <div className="field">
-              <label htmlFor="exercise-input">Exercise</label>
-              <input type="text" id="exercise-input" name="exercise" required />
-            </div>
+              <div className="field">
+                <label htmlFor="exercise-input">Exercise</label>
+                <input
+                  type="text"
+                  id="exercise-input"
+                  name="exercise"
+                  required
+                />
+              </div>
 
-            <div className="field">
-              <label htmlFor="exercise_sets-input">Sets</label>
-              <input
-                type="text"
-                id="exercise_sets-input"
-                name="exercise_sets"
-                required
-              />
-            </div>
+              <div className="field">
+                <label htmlFor="exercise_sets-input">Sets</label>
+                <input
+                  type="text"
+                  id="exercise_sets-input"
+                  name="exercise_sets"
+                  required
+                />
+              </div>
 
-            <div className="field">
-              <label htmlFor="reps-input">Reps</label>
-              <input type="text" id="reps-input" name="reps" required />
-            </div>
+              <div className="field">
+                <label htmlFor="reps-input">Reps</label>
+                <input type="text" id="reps-input" name="reps" required />
+              </div>
 
-            <div className="field">
-              <label htmlFor="weight_amount-input">Weight</label>
-              <input
-                type="text"
-                id="weight_amount-input"
-                name="weight_amount"
-                required
-              />
+              <div className="field">
+                <label htmlFor="weight_amount-input">Weight</label>
+                <input
+                  type="text"
+                  id="weight_amount-input"
+                  name="weight_amount"
+                  required
+                />
+              </div>
             </div>
 
             <div className="field">
@@ -134,18 +129,18 @@ export default class AddExercise extends Component {
                 <option value={null}>Workout Weekday</option>
                 {this.context.weekdays.map(weekday => (
                   <option
-                    key={weekday.name}
+                    key={weekday.weekday_name}
                     name="weekday"
                     value={weekday.id}
                     required
                   >
-                    {weekday.name}
+                    {weekday.weekday_name}
                   </option>
                 ))}
               </select>
             </div>
             <div className="submit-button">
-              <button type="submit">Add Workout</button>
+              <button type="submit">Submit Workout</button>
             </div>
           </WorkoutForm>
         </section>

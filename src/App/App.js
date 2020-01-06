@@ -16,29 +16,64 @@ import WorkoutsContext from "../WorkoutsContext";
 import config from "../config";
 import "./App.css";
 import { findWorkout, findWeekday } from "../workout-helpers";
+import weekdaysStore from "../Weekdays-store";
+import Footer from "../Footer/Footer";
+
+console.log(weekdaysStore);
+
 class App extends Component {
   state = {
     workouts: [],
-    weekdays: []
+    weekdays: [...weekdaysStore]
   };
+  // componentDidMount() {
+  //   Promise.all([
+  //     fetch(`${config.API_ENDPOINT}/workouts`, {
+  //       headers: {
+  //         Authorization: `Bearer ${config.API_KEY}`,
+  //         "content-type": "application/json"
+  //       }
+  //     }),
+  //     fetch(`${config.API_ENDPOINT}/weekdays`, {
+  //       headers: {
+  //         Authorization: `Bearer ${config.API_KEY}`,
+  //         "content-type": "application/json"
+  //       }
+  //     })
+  //   ])
+  //     .then(([workoutsRes, weekdaysRes]) => {
+  //       console.log(weekdaysRes);
+  //       if (!workoutsRes.ok)
+  //         return workoutsRes.json().then(e => Promise.reject(e));
+  //       if (!weekdaysRes.ok)
+  //         return weekdaysRes.json().then(e => Promise.reject(e));
+  //       return Promise.all([workoutsRes.json(), weekdaysRes.json()]);
+  //     })
+  //     .then(([workouts, weekdays]) => {
+  //       console.log(workouts, weekdays);
+  //       this.setState({ workouts, weekdays });
+  //     })
+  //     .catch(error => {
+  //       console.error({ error });
+  //     });
+  // }
   componentDidMount() {
-    Promise.all([
-      fetch(`${config.API_ENDPOINT}/workouts`),
-      fetch(`${config.API_ENDPOINT}/weekdays`)
-    ])
-      .then(([workoutsRes, weekdaysRes]) => {
-        if (!workoutsRes.ok)
+    console.log(this.state);
+    fetch(`${config.API_ENDPOINT}/workouts`, {
+      headers: {
+        Authorization: `Bearer ${config.API_KEY}`,
+        "content-type": "application/json"
+      }
+    })
+      .then(workoutsRes => {
+        if (!workoutsRes.ok) {
           return workoutsRes.json().then(e => Promise.reject(e));
-        if (!weekdaysRes.ok)
-          return weekdaysRes.json().then(e => Promise.reject(e));
-        return Promise.all([workoutsRes.json(), weekdaysRes.json()]);
+        }
+        return workoutsRes.json();
       })
-      .then(([workouts, weekdays]) => {
-        console.log(workouts, weekdays);
-        this.setState({ workouts, weekdays });
-      })
-      .catch(error => {
-        console.error({ error });
+      .then(workouts => {
+        console.log(workouts);
+        this.setState({ workouts });
       });
   }
   handleAddWorkout = workout => {
@@ -62,7 +97,7 @@ class App extends Component {
           <Route exact key={path} path={path} component={ExerciseListNav} />
         ))}
         <Route
-          path="/workouts/:workoutId"
+          path={["/workouts/:workoutId", "/add-workout"]}
           render={routeProps => {
             const { workoutId } = routeProps.match.params;
             const workout = findWorkout(workouts, workoutId) || {};
@@ -99,6 +134,7 @@ class App extends Component {
     );
   }
   render() {
+    console.log(this.state);
     return (
       <Router>
         <WorkoutsContext.Provider
@@ -118,6 +154,7 @@ class App extends Component {
               </p>
             </header>
             <main className="App__main">{this.renderMainRoutes()}</main>
+            <Footer />
           </div>
         </WorkoutsContext.Provider>
       </Router>

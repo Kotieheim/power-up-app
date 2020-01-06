@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "alias": "kotieheims-power-up-app",
-  "name": "power-up-ap",
+  "alias": "koties-power-up-app",
+  "name": "power-up-app",
   "routes": [
     {
       "src": "^/static/(.*)",
@@ -11,5 +11,10 @@
       "src": ".*",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "REACT_APP_API_ENDPOINT": "https://koties-power-up-app.herokuapp.com/api"
+    }
+  }
 }
