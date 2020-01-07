@@ -78,7 +78,9 @@ export default class AddExercise extends Component {
           <h2>Add a workout</h2>
           <WorkoutForm onSubmit={this.handleSubmit}>
             <div className="form_summary">
-              <label htmlFor="summary-input">Summary of workout</label>
+              <label className="form__label" htmlFor="summary-input">
+                Summary of workout
+              </label>
               <textarea type="text" id="summary-input" name="summary" />
             </div>
             <div className="form__container">
@@ -88,7 +90,9 @@ export default class AddExercise extends Component {
               </div>
 
               <div className="field">
-                <label htmlFor="exercise-input">Exercise</label>
+                <label className="form__label" htmlFor="exercise-input">
+                  Exercise
+                </label>
                 <input
                   type="text"
                   id="exercise-input"
@@ -98,7 +102,9 @@ export default class AddExercise extends Component {
               </div>
 
               <div className="field">
-                <label htmlFor="exercise_sets-input">Sets</label>
+                <label className="form__label" htmlFor="exercise_sets-input">
+                  Sets
+                </label>
                 <input
                   type="text"
                   id="exercise_sets-input"
@@ -108,12 +114,16 @@ export default class AddExercise extends Component {
               </div>
 
               <div className="field">
-                <label htmlFor="reps-input">Reps</label>
+                <label className="form__label" htmlFor="reps-input">
+                  Reps
+                </label>
                 <input type="text" id="reps-input" name="reps" required />
               </div>
 
               <div className="field">
-                <label htmlFor="weight_amount-input">Weight</label>
+                <label className="form__label" htmlFor="weight_amount-input">
+                  Weight
+                </label>
                 <input
                   type="text"
                   id="weight_amount-input"
@@ -124,9 +134,11 @@ export default class AddExercise extends Component {
             </div>
 
             <div className="field">
-              <label htmlFor="weekday-select">Day of the week</label>
+              <label className="form__label" htmlFor="weekday-select">
+                Day of the week
+              </label>
               <select id="weekday-select" name="weekday">
-                <option value={null}>Workout Weekday</option>
+                <option value={null}>Choose weekday</option>
                 {this.context.weekdays.map(weekday => (
                   <option
                     key={weekday.weekday_name}

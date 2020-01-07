@@ -5,11 +5,6 @@ import config from "../config";
 import WorkoutsContext from "../WorkoutsContext";
 
 export default class Exerciseform extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {};
-  // }
-
   handleChange = e => {
     let nam = e.target.name;
     let val = e.target.value;

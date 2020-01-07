@@ -11,13 +11,14 @@
 .ExerciseList li {
   box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.5);
   margin-bottom: 18px;
-  border: 1px solid white;
+  border: 1px solid #363636;
 }
 
 .ExerciseList__button {
   margin: 0 auto 20px;
 }
 .ExerciseList__add-workout-button {
+  text-align: center;
   display: block;
   width: 120px;
   margin: 0 auto;
@@ -25,8 +26,8 @@
   border: 1px solid gray;
   border-radius: 3px;
   padding: 8px;
-  background-color: white;
-  color: black;
+  background-color: #363636;
+  color: #e5e5e5;
   box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.5);
 }
 .ExerciseList__add-workout-button:hover {

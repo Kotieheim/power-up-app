@@ -1,7 +1,7 @@
 .Workout {
   --workout-height: 69px;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #363636;
+  color: #cca43b;
   height: var(--workout-height);
   padding: 8px 0 8px 8px;
   position: relative;
@@ -31,7 +31,7 @@
   color: #ffb72f;
 }
 .Workout__delete {
-  background-color: #949494;
+  background-color: #000004;
   color: white;
   margin-left: 75%;
   border: none;
@@ -39,7 +39,6 @@
 }
 .Workout__dates {
   bottom: 8px;
-  color: #a7a5a5;
+  color: #e5e5e5;
   font-size: 14px;
-  /* position: absolute; */
 }

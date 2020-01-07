@@ -7,8 +7,8 @@
 }
 
 .App__nav {
-  background-color: #eeeeee;
-  color: #fff;
+  background-color: #363636;
+  color: #e5e5e5;
   grid-area: sidebar;
   height: 100vh;
   overflow: auto;
@@ -19,18 +19,18 @@
 }
 
 .App__header {
-  background-color: #eeeeee;
-  color: #585858;
+  background-color: #242f40;
+  color: #fbfef9;
   text-align: center;
   padding: 20px;
 }
 
 .App__header a {
-  color: #bdbdbd;
+  color: #e5e5e5;
 }
 
 .App__main {
-  background-color: #949494;
+  background-color: #e5e5e5;
   grid-area: main;
   height: calc(100vh - 120px);
   overflow: auto;
@@ -41,8 +41,11 @@
 }
 .App__title a {
   background-color: #eeeeee;
-  color: #bdbdbd;
+  color: #cca43b;
   text-shadow: 2px 1px 2px black;
   text-decoration: none;
+  font-size: 46px;
+}
+.App__title h2 {
   font-size: 46px;
 }

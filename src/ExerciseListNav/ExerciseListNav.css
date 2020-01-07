@@ -10,8 +10,8 @@
 }
 
 .ExerciseListNav__weekday-link {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #242f40;
+  color: #e5e5e5;
   display: block;
   font-size: 20px;
   margin: 28px 8px auto;
@@ -20,7 +20,7 @@
   transition: all 0.3s ease;
 }
 .ExerciseListNav__weekday-link:hover {
-  color: #ffb72f;
+  color: #cca43b;
   cursor: pointer;
   transition: all 0.3s ease;
   -webkit-transform: scale(1.1);
@@ -28,6 +28,7 @@
   transform: scale(1.1);
 }
 .ExerciseListNav__weekday-link.active {
+  color: #cca43b;
   transition: all 0.3s ease;
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);

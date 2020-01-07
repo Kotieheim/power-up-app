@@ -33,7 +33,7 @@ export default class Exercisepage extends Component {
           <li>X</li>
           <li className="item-of-interest">{workout.reps}</li>
           <li>at</li>
-          <li className="item-of-interest">{workout.weight_amount}lbs</li>
+          <li className="item-of-interest">{workout.weight_amount} lbs</li>
         </ul>
         <h2 className="Exercisepage__summary">{workout.summary}</h2>
         <NavLink

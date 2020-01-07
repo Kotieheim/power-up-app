@@ -26,37 +26,6 @@ class App extends Component {
     workouts: [],
     weekdays: [...weekdaysStore]
   };
-  // componentDidMount() {
-  //   Promise.all([
-  //     fetch(`${config.API_ENDPOINT}/workouts`, {
-  //       headers: {
-  //         Authorization: `Bearer ${config.API_KEY}`,
-  //         "content-type": "application/json"
-  //       }
-  //     }),
-  //     fetch(`${config.API_ENDPOINT}/weekdays`, {
-  //       headers: {
-  //         Authorization: `Bearer ${config.API_KEY}`,
-  //         "content-type": "application/json"
-  //       }
-  //     })
-  //   ])
-  //     .then(([workoutsRes, weekdaysRes]) => {
-  //       console.log(weekdaysRes);
-  //       if (!workoutsRes.ok)
-  //         return workoutsRes.json().then(e => Promise.reject(e));
-  //       if (!weekdaysRes.ok)
-  //         return weekdaysRes.json().then(e => Promise.reject(e));
-  //       return Promise.all([workoutsRes.json(), weekdaysRes.json()]);
-  //     })
-  //     .then(([workouts, weekdays]) => {
-  //       console.log(workouts, weekdays);
-  //       this.setState({ workouts, weekdays });
-  //     })
-  //     .catch(error => {
-  //       console.error({ error });
-  //     });
-  // }
   componentDidMount() {
     fetch(`${config.API_ENDPOINT}/workouts`, {
       headers: {
@@ -90,7 +59,9 @@ class App extends Component {
     return (
       <>
         <h1 className="App__title">
-          <Link to="/">Power-Up!</Link>
+          <Link to="/">
+            <h2>Power-Up!</h2>
+          </Link>
         </h1>
         {["/", "/weekdays/:weekdayId"].map(path => (
           <Route exact key={path} path={path} component={ExerciseListNav} />
