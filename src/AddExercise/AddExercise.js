@@ -71,7 +71,6 @@ export default class AddExercise extends Component {
       });
   };
   render() {
-    console.log(this.context);
     return (
       <div>
         <section className="AddWorkout">

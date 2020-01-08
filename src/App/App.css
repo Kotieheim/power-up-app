@@ -40,12 +40,12 @@
   background-color: black;
 }
 .App__title a {
+  font-family: "Bungee Shade", cursive;
   background-color: #eeeeee;
-  color: #cca43b;
+  color: #00edb1;
   text-shadow: 2px 1px 2px black;
   text-decoration: none;
-  font-size: 46px;
 }
 .App__title h2 {
-  font-size: 46px;
+  font-size: 40px;
 }

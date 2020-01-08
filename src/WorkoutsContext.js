@@ -1,6 +1,7 @@
 import React from "react";
 
 const WorkoutsContext = React.createContext({
+  user: {},
   workouts: [],
   weekdays: [],
   error: null,

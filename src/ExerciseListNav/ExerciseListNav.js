@@ -19,7 +19,7 @@ export default class ExerciseListNav extends Component {
                 className="ExerciseListNav__weekday-link"
                 to={`/weekdays/${weekday.id}`}
               >
-                {weekday.weekday_name}
+                {weekday.weekday_name.toUpperCase()}
               </NavLink>
             </li>
           ))}

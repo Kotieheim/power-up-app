@@ -47,7 +47,7 @@ class Exerciseitem extends Component {
         <Link className="Workouts__link-box" to={`/workouts/${this.props.id}`}>
           <div className="Workout">
             <h2 className="Workout__title">
-              {this.props.muscle}
+              <div className="Workout__muscle-title">{this.props.muscle}</div>
               <div className="Workout__dates">
                 <div className="Workout__dates-modified">
                   Date: <span>{Moment(date).format("LLLL")}</span>

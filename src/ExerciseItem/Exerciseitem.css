@@ -1,7 +1,7 @@
 .Workout {
   --workout-height: 69px;
   background-color: #363636;
-  color: #cca43b;
+  color: #00edb1;
   height: var(--workout-height);
   padding: 8px 0 8px 8px;
   position: relative;
@@ -13,6 +13,11 @@
 }
 .Workouts__link-box {
   text-decoration: none;
+}
+.Workout__muscle-title {
+  font-family: "Londrina Outline", cursive;
+  letter-spacing: 3px;
+  /* font-weight: normal; */
 }
 
 .Workout__title {
@@ -26,9 +31,6 @@
 .Workout__title a {
   color: #000000;
   /* display: block; */
-}
-.Workout__title a:hover {
-  color: #ffb72f;
 }
 .Workout__delete {
   background-color: #000004;

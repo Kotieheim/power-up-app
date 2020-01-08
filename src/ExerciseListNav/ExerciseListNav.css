@@ -10,17 +10,20 @@
 }
 
 .ExerciseListNav__weekday-link {
+  font-family: "Londrina Outline", cursive;
+  letter-spacing: 4px;
+  font-weight: bold;
   background-color: #242f40;
   color: #e5e5e5;
   display: block;
-  font-size: 20px;
+  font-size: 23px;
   margin: 28px 8px auto;
   padding: 8px 16px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 .ExerciseListNav__weekday-link:hover {
-  color: #cca43b;
+  color: #00edb1;
   cursor: pointer;
   transition: all 0.3s ease;
   -webkit-transform: scale(1.1);
@@ -28,7 +31,7 @@
   transform: scale(1.1);
 }
 .ExerciseListNav__weekday-link.active {
-  color: #cca43b;
+  color: #00edb1;
   transition: all 0.3s ease;
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);

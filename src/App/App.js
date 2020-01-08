@@ -6,23 +6,25 @@ import {
   Switch,
   Link
 } from "react-router-dom";
-
+import Header from "../Header/Header";
 import ExerciseListNav from "../ExerciseListNav/ExerciseListNav";
 import ExercisepageNav from "../ExercisepageNav/ExercisepageNav";
 import ExerciseList from "../ExerciseList/ExerciseList";
 import Exercisepage from "../Exercisepage/Exercisepage";
 import AddExercise from "../AddExercise/AddExercise";
 import WorkoutsContext from "../WorkoutsContext";
+import Loginpage from "../Loginpage/Loginpage";
 import config from "../config";
 import "./App.css";
 import { findWorkout, findWeekday } from "../workout-helpers";
 import weekdaysStore from "../Weekdays-store";
 import Footer from "../Footer/Footer";
-
-console.log(process.env.REACT_APP_API_ENDPOINT);
+import Registerpage from "../Registerpage/Registerpage";
+import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
 
 class App extends Component {
   state = {
+    user: {},
     workouts: [],
     weekdays: [...weekdaysStore]
   };
@@ -60,14 +62,14 @@ class App extends Component {
       <>
         <h1 className="App__title">
           <Link to="/">
-            <h2>Power-Up!</h2>
+            <h2>Power-Up</h2>
           </Link>
         </h1>
         {["/", "/weekdays/:weekdayId"].map(path => (
           <Route exact key={path} path={path} component={ExerciseListNav} />
         ))}
         <Route
-          path={["/workouts/:workoutId", "/add-workout"]}
+          path={["/workouts/:workoutId", "/add-workout", "/login", "/register"]}
           render={routeProps => {
             const { workoutId } = routeProps.match.params;
             const workout = findWorkout(workouts, workoutId) || {};
@@ -98,6 +100,8 @@ class App extends Component {
               return <Exercisepage {...routeProps} />;
             }}
           />
+          <PublicOnlyRoute path="/login" component={Loginpage} />
+          <PublicOnlyRoute path="/register" component={Registerpage} />
           <Route path="/add-workout" component={AddExercise} />
         </Switch>
       </>
@@ -109,6 +113,8 @@ class App extends Component {
       <Router>
         <WorkoutsContext.Provider
           value={{
+            user: this.state.user,
+            logoutUser: this.logout,
             workouts: this.state.workouts,
             weekdays: this.state.weekdays,
             handleAddWorkout: this.handleAddWorkout,
@@ -118,10 +124,7 @@ class App extends Component {
           <div className="App">
             <nav className="App__nav">{this.renderNavRoutes()}</nav>
             <header className="App__header">
-              <p>
-                View all workouts logged, or sort by days of the week to see
-                which workouts performed on which day!
-              </p>
+              <Header />
             </header>
             <main className="App__main">{this.renderMainRoutes()}</main>
             <Footer />
