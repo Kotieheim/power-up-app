@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   withRouter,
   Switch,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import Header from "../Header/Header";
 import ExerciseListNav from "../ExerciseListNav/ExerciseListNav";
@@ -20,10 +21,26 @@ import { findWorkout, findWeekday } from "../workout-helpers";
 import weekdaysStore from "../Weekdays-store";
 import Footer from "../Footer/Footer";
 import Registerpage from "../Registerpage/Registerpage";
-import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
 import TokenService from "../services/token-service";
 
-console.log(config.API_ENDPOINT);
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      TokenService.getAuthToken() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: "/login",
+            state: { from: props.location }
+          }}
+        />
+      )
+    }
+  />
+);
+
 class App extends Component {
   state = {
     isLoggedIn: false,
@@ -34,7 +51,7 @@ class App extends Component {
   componentDidMount() {
     fetch(`${config.API_ENDPOINT}/workouts`, {
       headers: {
-        Authorization: `Bearer ${config.API_KEY}`,
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
         "content-type": "application/json"
       }
     })
@@ -110,7 +127,7 @@ class App extends Component {
 
           <Route path="/login" component={Loginpage} />
           <Route path="/register" component={Registerpage} />
-          <Route path="/add-workout" component={AddExercise} />
+          <PrivateRoute path="/add-workout" component={AddExercise} />
         </Switch>
       </>
     );

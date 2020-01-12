@@ -4,6 +4,7 @@ import WorkoutForm from "../WorkoutForm/WorkoutForm";
 import "./AddExercise.css";
 import config from "../config";
 import PropTypes from "prop-types";
+import TokenService from "../services/token-service";
 
 export default class AddExercise extends Component {
   static propTypes = {
@@ -43,7 +44,7 @@ export default class AddExercise extends Component {
       method: "POST",
       body: JSON.stringify(workout),
       headers: {
-        Authorization: `Bearer ${config.API_KEY}`,
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
         "content-type": "application/json"
       }
     })
