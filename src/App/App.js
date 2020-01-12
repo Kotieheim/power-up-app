@@ -23,6 +23,7 @@ import Registerpage from "../Registerpage/Registerpage";
 import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
 import TokenService from "../services/token-service";
 
+console.log(config.API_ENDPOINT);
 class App extends Component {
   state = {
     isLoggedIn: false,
