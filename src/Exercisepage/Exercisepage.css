@@ -10,15 +10,17 @@
 
 .Exercisepage__summary {
   background-color: #363636;
+  font-size: 16px;
   color: #e5e5e5;
-  padding: 26px;
+  padding: 12px;
   text-align: center;
   border: 1px solid rgba(128, 128, 128, 0.5);
   box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
 }
 .item-of-interest {
-  font-size: 36px;
+  font-size: 16px;
+  color: #363636;
 }
 
 .Exercisepage__list-workout {
@@ -26,9 +28,60 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 36px;
+  padding: 6px;
 }
 
-.item-of-interest {
-  color: #363636;
+@media (min-width: 429px) {
+  .Exercisepage__summary {
+    font-size: 18px;
+    width: 260px;
+    margin: 26px auto;
+  }
+  .item-of-interest {
+    font-size: 24px;
+  }
+  .Exercisepage__list-workout {
+    padding: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .Exercisepage__summary {
+    font-size: 20px;
+    width: 400px;
+  }
+  .item-of-interest {
+    font-size: 38px;
+  }
+  .Exercisepage__list-workout {
+    padding: 46px;
+    width: 500px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 900px) {
+  .Exercisepage h1 {
+    font-size: 36px;
+  }
+  .Exercisepage__summary {
+    font-size: 24px;
+    width: 500px;
+    padding: 20px 40px;
+  }
+  .Exercisepage__list-workout {
+    width: 600px;
+  }
+  .Exercisepage {
+    background-color: #e5e5e5;
+    height: 100%;
+    width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  .Exercisepage__list-workout {
+    width: 800px;
+  }
+  .item-of-interest {
+    font-size: 56px;
+    color: #363636;
+  }
 }

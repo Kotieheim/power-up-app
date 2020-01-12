@@ -8,12 +8,12 @@ import {
 } from "react-router-dom";
 import Header from "../Header/Header";
 import ExerciseListNav from "../ExerciseListNav/ExerciseListNav";
-import ExercisepageNav from "../ExercisepageNav/ExercisepageNav";
+import ExercisepageNav from "../ExercisePageNav/ExercisepageNav";
 import ExerciseList from "../ExerciseList/ExerciseList";
 import Exercisepage from "../Exercisepage/Exercisepage";
 import AddExercise from "../AddExercise/AddExercise";
 import WorkoutsContext from "../WorkoutsContext";
-import Loginpage from "../Loginpage/Loginpage";
+import Loginpage from "../LoginPage/Loginpage";
 import config from "../config";
 import "./App.css";
 import { findWorkout, findWeekday } from "../workout-helpers";
@@ -21,9 +21,11 @@ import weekdaysStore from "../Weekdays-store";
 import Footer from "../Footer/Footer";
 import Registerpage from "../Registerpage/Registerpage";
 import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
+import TokenService from "../services/token-service";
 
 class App extends Component {
   state = {
+    isLoggedIn: false,
     user: {},
     workouts: [],
     weekdays: [...weekdaysStore]
@@ -42,7 +44,6 @@ class App extends Component {
         return workoutsRes.json();
       })
       .then(workouts => {
-        console.log(workouts);
         this.setState({ workouts });
       });
   }
@@ -62,7 +63,7 @@ class App extends Component {
       <>
         <h1 className="App__title">
           <Link to="/">
-            <h2>Power-Up</h2>
+            <h2>Power Up</h2>
           </Link>
         </h1>
         {["/", "/weekdays/:weekdayId"].map(path => (
@@ -80,6 +81,11 @@ class App extends Component {
       </>
     );
   }
+  handleLogin = () => {
+    this.setState({
+      isLoggedIn: true
+    });
+  };
   renderMainRoutes() {
     return (
       <>
@@ -100,31 +106,34 @@ class App extends Component {
               return <Exercisepage {...routeProps} />;
             }}
           />
-          <PublicOnlyRoute path="/login" component={Loginpage} />
-          <PublicOnlyRoute path="/register" component={Registerpage} />
+
+          <Route path="/login" component={Loginpage} />
+          <Route path="/register" component={Registerpage} />
           <Route path="/add-workout" component={AddExercise} />
         </Switch>
       </>
     );
   }
   render() {
-    console.log(this.state);
+    let { isLoggedIn } = this.state;
+    console.log(isLoggedIn);
     return (
       <Router>
         <WorkoutsContext.Provider
           value={{
             user: this.state.user,
-            logoutUser: this.logout,
+            isLoggedIn: this.logout,
             workouts: this.state.workouts,
             weekdays: this.state.weekdays,
             handleAddWorkout: this.handleAddWorkout,
-            handleDelete: this.handleDeleteWorkout
+            handleDelete: this.handleDeleteWorkout,
+            handleLogin: this.handleLogin
           }}
         >
           <div className="App">
             <nav className="App__nav">{this.renderNavRoutes()}</nav>
             <header className="App__header">
-              <Header />
+              <Header isLoggedIn={isLoggedIn} />
             </header>
             <main className="App__main">{this.renderMainRoutes()}</main>
             <Footer />

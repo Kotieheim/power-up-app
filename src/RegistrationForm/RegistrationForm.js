@@ -31,9 +31,9 @@ export class RegistrationForm extends Component {
   render() {
     const { error } = this.state;
     return (
-      <form className="RegistrationForm" onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p className="red-error">{error}</p>}</div>
-        <div className="user_name">
+        <div className="register_field">
           <label htmlFor="RegistrationForm_user_name">User Name</label>
           <input
             required
@@ -42,7 +42,7 @@ export class RegistrationForm extends Component {
             id="RegistrationForm_user_name"
           ></input>
         </div>
-        <div className="full_name">
+        <div className="register_field">
           <label htmlFor="RegistrationForm_full_name">Full Name</label>
           <input
             required
@@ -51,7 +51,7 @@ export class RegistrationForm extends Component {
             id="RegistrationForm_full_name"
           ></input>
         </div>
-        <div className="password">
+        <div className="register_field">
           <label htmlFor="RegistrationForm_password">Password</label>
           <input
             required

@@ -21,9 +21,9 @@
 }
 
 .Workout__title {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-around; */
   margin: 0;
   max-width: 80%;
   min-height: 24px;
@@ -33,14 +33,28 @@
   /* display: block; */
 }
 .Workout__delete {
+  position: absolute;
+  padding: 4px 6px;
+  bottom: 2px;
+  right: 6px;
   background-color: #000004;
   color: white;
-  margin-left: 75%;
+  /* margin-left: 75%; */
   border: none;
-  height: 30px;
+  border-radius: 50%;
 }
 .Workout__dates {
   bottom: 8px;
   color: #e5e5e5;
   font-size: 14px;
+}
+@media (min-width: 768px) {
+  .Workout__title {
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .Workout {
+  }
 }

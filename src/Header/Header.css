@@ -1,0 +1,27 @@
+.Header__Logged-in,
+.Header__not-logged-in {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  font-size: 13px;
+}
+
+.Header__Logged-in a,
+.Header__not-logged-in a {
+  text-decoration: none;
+  margin: 8px;
+}
+
+.Header__Logged-in a:hover,
+.Header__not-logged-in a:hover {
+  color: #00edb1;
+}
+@media (min-width: 631px) {
+  .Header__Logged-in,
+  .Header__not-logged-in {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    font-size: 16px;
+  }
+}

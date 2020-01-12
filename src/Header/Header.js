@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import TokenService from "../services/token-service";
 import "./Header.css";
-import WorkoutsContext from "../WorkoutsContext";
 
 export class Header extends Component {
-  static contextType = WorkoutsContext;
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
-    console.log(this.state);
+    this.setState({
+      isLoggedIn: false
+    });
   };
 
   renderLogoutLink() {
@@ -20,7 +20,6 @@ export class Header extends Component {
       </div>
     );
   }
-
   renderLoginLink() {
     return (
       <div className="Header__not-logged-in">
@@ -29,13 +28,19 @@ export class Header extends Component {
       </div>
     );
   }
+
   render() {
     return (
-      <nav>
-        {TokenService.hasAuthToken()
-          ? this.renderLogoutLink()
-          : this.renderLoginLink()}
-      </nav>
+      <div>
+        <nav>
+          {TokenService.hasAuthToken()
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()}
+        </nav>
+        <p className="Header_saying">
+          View all workouts logged, or sort by days of the week!
+        </p>
+      </div>
     );
   }
 }

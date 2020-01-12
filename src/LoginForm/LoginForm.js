@@ -25,6 +25,7 @@ export class LoginForm extends Component {
         password.value = "";
         TokenService.saveAuthToken(res.authToken);
         this.props.onLoginSuccess();
+        this.context.handleLogin();
         console.log(this.state);
       })
       .catch(res => {
@@ -32,21 +33,32 @@ export class LoginForm extends Component {
       });
   };
   render() {
+    console.log(this.context);
     const { error } = this.state;
     return (
-      <form onSubmit={this.handleSubmitJwtAuth}>
-        <div role="alert">{error && <p className="red_error">{error}</p>}</div>
-        <div className="user_name">
-          <label htmlFor="Login_user_name">User name</label>
-          <input required name="user_name" id="Login_user_name"></input>
-        </div>
+      <div>
+        <form onSubmit={this.handleSubmitJwtAuth}>
+          <div role="alert">
+            {error && <p className="red_error">{error}</p>}
+          </div>
+          <div className="login_field">
+            <label htmlFor="Login_user_name">User name</label>
+            <input required name="user_name" id="Login_user_name"></input>
+          </div>
 
-        <div className="password">
-          <label htmlFor="login_password">password</label>
-          <input required name="password" id="login_password"></input>
-        </div>
-        <button type="submit">Login</button>
-      </form>
+          <div className="login_field">
+            <label htmlFor="login_password">password</label>
+            <input required name="password" id="login_password"></input>
+          </div>
+          <button
+            className="login_button"
+            onClick={this.props.handleLogin}
+            type="submit"
+          >
+            Login
+          </button>
+        </form>
+      </div>
     );
   }
 }

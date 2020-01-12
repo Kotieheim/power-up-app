@@ -32,7 +32,6 @@ class Exerciseitem extends Component {
       })
       .then(() => {
         this.context.handleDelete(workoutId);
-        // this.props.onDeleteWorkout(workoutId);
       })
       .catch(error => {
         console.error({ error });
@@ -50,7 +49,7 @@ class Exerciseitem extends Component {
               <div className="Workout__muscle-title">{this.props.muscle}</div>
               <div className="Workout__dates">
                 <div className="Workout__dates-modified">
-                  Date: <span>{Moment(date).format("LLLL")}</span>
+                  Date: <span>{Moment(date).format("MMM Do YYYY")}</span>
                 </div>
               </div>
             </h2>
@@ -59,7 +58,7 @@ class Exerciseitem extends Component {
               type="button"
               onClick={this.handleClickDelete}
             >
-              Remove workout
+              X
             </button>
           </div>
         </Link>

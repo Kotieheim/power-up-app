@@ -28,31 +28,3 @@ export default class ExerciseListNav extends Component {
     );
   }
 }
-
-// import React from "react";
-// import WorkoutsContext from "../WorkoutsContext";
-// import { NavLink } from "react-router-dom";
-
-// export default function ExerciseListNav() {
-//   return (
-//     <WorkoutsContext.Consumer>
-//       {({ workouts, weekdays }) => (
-//         <div className="ExerciseListNav">
-//           <ul className="ExerciseListNav__list">
-//             {weekdays.map(weekday => (
-//               <li key={weekday.name}>
-//                 <NavLink
-//                   key={weekday.id}
-//                   className="ExerciseListNav__weekday-link"
-//                   to={`/weekdays/${weekday.id}`}
-//                 >
-//                   {weekday.name}
-//                 </NavLink>
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       )}
-//     </WorkoutsContext.Consumer>
-//   );
-// }

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import LoginForm from "../LoginForm/LoginForm";
 import "./Loginpage.css";
 import WorkoutsContext from "../WorkoutsContext";
-
 export class Loginpage extends Component {
   static defaultProps = {
     location: {},
@@ -10,16 +9,15 @@ export class Loginpage extends Component {
       push: () => {}
     }
   };
+  static contextType = WorkoutsContext;
 
   handleLoginSuccess = () => {
-    // const { location, history } = this.props;
-    // const destination = (location.state || {}).from || "/";
-    // history.push(destination);
     this.props.history.push("/");
   };
   render() {
+    console.log(this.context);
     return (
-      <div className="LoginPage">
+      <div className="login_page">
         <h2>Login</h2>
 
         <LoginForm onLoginSuccess={this.handleLoginSuccess} />

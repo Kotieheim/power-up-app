@@ -1,13 +1,13 @@
 .ExercisePageNav__back-button {
   display: block;
-  width: 120px;
-  margin: 75% auto;
+
+  margin: 100px auto;
   text-decoration: none;
   border: 1px solid gray;
   border-radius: 3px;
-  padding: 8px;
+  padding: 8px 16px;
   background-color: white;
-  color: black;
+  color: #242f40;
   box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -17,14 +17,4 @@
 }
 .ExercisePageNav__back-button:hover {
   background-color: #00edb1;
-}
-
-.ExercisePageNav__weekday-name {
-  color: #b5b3b3;
-  font-size: 40px;
-  height: 50vh;
-  margin: 0 0 0 auto;
-  text-orientation: upright;
-  width: 75px;
-  writing-mode: vertical-lr;
 }

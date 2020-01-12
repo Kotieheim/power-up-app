@@ -22,7 +22,8 @@
   background-color: #242f40;
   color: #fbfef9;
   text-align: center;
-  padding: 20px;
+  padding: 42px 12px 0;
+  left: auto;
 }
 
 .App__header a {
@@ -47,5 +48,23 @@
   text-decoration: none;
 }
 .App__title h2 {
-  font-size: 40px;
+  font-size: 20px;
+  margin: 0 4px;
+}
+
+@media (min-width: 429px) {
+  .App__title h2 {
+    font-size: 26px;
+  }
+}
+@media (min-width: 550px) {
+  .App__title h2 {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 900px) {
+  .App__title h2 {
+    font-size: 42px;
+  }
 }

@@ -1,5 +1,5 @@
 .ExerciseList {
-  padding-top: 10px;
+  padding: 10px;
 }
 
 .ExerciseList ul {
@@ -35,4 +35,13 @@
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
+}
+
+@media (min-width: 900px) {
+  .ExerciseList {
+    padding: 10px;
+  }
+  .ExerciseList li {
+    margin-bottom: 30px;
+  }
 }

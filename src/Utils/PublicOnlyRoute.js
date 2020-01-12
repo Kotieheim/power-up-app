@@ -14,6 +14,6 @@ export default function PublicOnlyRoute({ component, ...props }) {
           <Component {...componentProps} />
         )
       }
-    />
+    ></Route>
   );
 }

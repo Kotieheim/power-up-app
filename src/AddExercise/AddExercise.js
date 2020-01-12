@@ -74,7 +74,7 @@ export default class AddExercise extends Component {
     return (
       <div>
         <section className="AddWorkout">
-          <h2>Add a workout</h2>
+          <h2>Add workout</h2>
           <WorkoutForm onSubmit={this.handleSubmit}>
             <div className="form_summary">
               <label className="form__label" htmlFor="summary-input">
@@ -137,7 +137,7 @@ export default class AddExercise extends Component {
                 Day of the week
               </label>
               <select id="weekday-select" name="weekday">
-                <option value={null}>Choose weekday</option>
+                <option value={null}>Weekday</option>
                 {this.context.weekdays.map(weekday => (
                   <option
                     key={weekday.weekday_name}
@@ -151,7 +151,7 @@ export default class AddExercise extends Component {
               </select>
             </div>
             <div className="submit-button">
-              <button type="submit">Submit Workout</button>
+              <button type="submit">Add Workout</button>
             </div>
           </WorkoutForm>
         </section>
