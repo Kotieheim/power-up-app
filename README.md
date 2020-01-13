@@ -6,9 +6,9 @@
 
 # Api
 
-a RESTful API made using Express.js
+a RESTful API made using Express.js and PostreSQL hosted on Heroku.
 
-[Api Repo](https://github.com/Kotieheim/power-up-app-server)
+[Server Repo](https://github.com/Kotieheim/power-up-app-server)
 
 # Screenshots
 
