@@ -1,0 +1,14 @@
+#logo {
+  display: block;
+  margin: 15% auto;
+  height: 23vw;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0px 11px 21px -8px rgba(0, 0, 0, 0.7);
+}
+@media (min-width: 900px) {
+  #logo {
+    height: 250px;
+  }
+}

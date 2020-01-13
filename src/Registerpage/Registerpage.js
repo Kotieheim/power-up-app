@@ -3,6 +3,9 @@ import RegistrationForm from "../RegistrationForm/RegistrationForm";
 
 import "./Registerpage.css";
 
+// Register route with the form to register and to
+// redirect to login page after successful registration
+
 export class Registerpage extends Component {
   static defaultProps = {
     history: {

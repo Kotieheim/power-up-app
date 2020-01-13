@@ -9,6 +9,21 @@
   border: 1px solid rgba(102, 102, 102, 0.2);
   border-radius: 5px;
 }
+.dummy_profile {
+  background-color: #242f40;
+  color: #e5e5e5;
+  display: block;
+  text-align: left;
+  width: 180px;
+  /* padding: 5px 18px; */
+  text-align: center;
+  margin: 30px auto;
+  border: 1px solid rgba(102, 102, 102, 0.2);
+  border-radius: 5px;
+}
+.dummy_profile h1 {
+  text-decoration: underline;
+}
 
 .login_field input,
 .login_field label {

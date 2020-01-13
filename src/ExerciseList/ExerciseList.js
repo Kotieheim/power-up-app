@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./ExerciseList.css";
 
+// Renders all added workouts for user.
+
 export default class ExerciseList extends Component {
   static defaultProps = {
     onDeleteWorkout: () => {}
@@ -13,7 +15,6 @@ export default class ExerciseList extends Component {
   static contextType = WorkoutsContext;
   render() {
     const { weekdayId } = this.props.match.params;
-    console.log(weekdayId);
     return (
       <section className="ExerciseList">
         <NavLink
@@ -33,20 +34,11 @@ export default class ExerciseList extends Component {
                   date_created={workout.date_created}
                   handleDelete={this.context.handleDelete}
                 />
-                {/* {console.log(weekdayId)} taken out of workoutforweekday params*/}
               </li>
             )
           )}
         </ul>
-        <div className="ExerciseList__button">
-          {/* <NavLink
-            to="/add-workout"
-            type="button"
-            className="ExerciseList__add-workout-button"
-          >
-            Add Workout
-          </NavLink> */}
-        </div>
+        <div className="ExerciseList__button"></div>
       </section>
     );
   }

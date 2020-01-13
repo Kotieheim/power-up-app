@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import TokenService from "../services/token-service";
 import AuthApiService from "../services/auth-api-service";
 import WorkoutsContext from "../WorkoutsContext";
-
+// dummy login profile
+// user_name: dunder
+// password: P@ssw0rd!
 export class LoginForm extends Component {
   static contextType = WorkoutsContext;
   static defaultProps = {
@@ -26,14 +28,12 @@ export class LoginForm extends Component {
         TokenService.saveAuthToken(res.authToken);
         this.props.onLoginSuccess();
         this.context.handleLogin();
-        console.log(this.state);
       })
       .catch(res => {
         this.setState({ error: res.error });
       });
   };
   render() {
-    console.log(this.context);
     const { error } = this.state;
     return (
       <div>

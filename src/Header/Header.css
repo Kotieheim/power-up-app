@@ -5,10 +5,12 @@
   right: 6px;
   font-size: 13px;
 }
+.Header_saying_1 {
+  font-size: 12px;
+}
 
 .Header__Logged-in a,
 .Header__not-logged-in a {
-  text-decoration: none;
   margin: 8px;
 }
 
@@ -22,6 +24,20 @@
     position: absolute;
     top: 5px;
     right: 6px;
+    font-size: 16px;
+  }
+  .Header_saying_1 {
+    font-size: 16px;
+  }
+  .Header_saying_2 {
+    font-size: 12px;
+  }
+}
+@media (min-width: 900px) {
+  .Header_saying_1 {
+    font-size: 18px;
+  }
+  .Header_saying_2 {
     font-size: 16px;
   }
 }

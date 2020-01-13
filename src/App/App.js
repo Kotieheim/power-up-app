@@ -22,6 +22,7 @@ import weekdaysStore from "../Weekdays-store";
 import Footer from "../Footer/Footer";
 import Registerpage from "../Registerpage/Registerpage";
 import TokenService from "../services/token-service";
+import Logo from "../Logo/Logo";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -48,6 +49,9 @@ class App extends Component {
     workouts: [],
     weekdays: [...weekdaysStore]
   };
+  // Initial API call, will only mount if a registered
+  // user is logged in and will only show that users added
+  // workouts
   componentDidMount() {
     fetch(`${config.API_ENDPOINT}/workouts`, {
       headers: {
@@ -63,6 +67,9 @@ class App extends Component {
       })
       .then(workouts => {
         this.setState({ workouts });
+      })
+      .catch(e => {
+        console.error(e);
       });
   }
   handleAddWorkout = workout => {
@@ -75,6 +82,7 @@ class App extends Component {
       workouts: this.state.workouts.filter(workout => workout.id !== workoutId)
     });
   };
+  // renders all links and routes used for navigating app
   renderNavRoutes() {
     const { workouts, weekdays } = this.state;
     return (
@@ -104,6 +112,7 @@ class App extends Component {
       isLoggedIn: true
     });
   };
+  // renders the main sections routes
   renderMainRoutes() {
     return (
       <>
@@ -134,7 +143,6 @@ class App extends Component {
   }
   render() {
     let { isLoggedIn } = this.state;
-    console.log(isLoggedIn);
     return (
       <Router>
         <WorkoutsContext.Provider
@@ -149,7 +157,10 @@ class App extends Component {
           }}
         >
           <div className="App">
-            <nav className="App__nav">{this.renderNavRoutes()}</nav>
+            <nav className="App__nav">
+              {this.renderNavRoutes()}
+              <Logo />
+            </nav>
             <header className="App__header">
               <Header isLoggedIn={isLoggedIn} />
             </header>

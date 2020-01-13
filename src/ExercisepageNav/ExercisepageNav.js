@@ -3,6 +3,9 @@ import WorkoutsContext from "../WorkoutsContext";
 import { findWorkout, findWeekday } from "../workout-helpers";
 import "./ExercisepageNav.css";
 
+// Navigation for when at different routes and provides
+// a go back button to go back one step.
+
 export default class ExercisepageNav extends Component {
   static defaultProps = {
     history: {

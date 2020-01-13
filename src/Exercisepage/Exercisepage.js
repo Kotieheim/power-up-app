@@ -6,6 +6,8 @@ import WorkoutsContext from "../WorkoutsContext";
 import { findWorkout } from "../workout-helpers";
 import PropTypes from "prop-types";
 
+// Full detailed workout page using information from database
+
 export default class Exercisepage extends Component {
   static contextType = WorkoutsContext;
   handleDelete = workoutId => {
@@ -13,12 +15,10 @@ export default class Exercisepage extends Component {
   };
   render() {
     const { workoutId } = this.props.match.params;
-    console.log(this.props.match);
     const workout = findWorkout(this.context.workouts, workoutId);
     if (workout === undefined) {
       return null;
     }
-    console.log(workout);
     return (
       <section className="Exercisepage">
         <Exerciseitem
@@ -47,12 +47,6 @@ export default class Exercisepage extends Component {
     );
   }
 }
-
-// Exercisepage.defaultProps = {
-//   workouts: {
-//     content: ""
-//   }
-// };
 
 Exercisepage.propTypes = {
   workoutId: PropTypes.string

@@ -4,11 +4,13 @@ import WorkoutsContext from "../WorkoutsContext";
 
 import "./ExerciseListNav.css";
 
+// Sidebar weekdays used for sorting workouts performed
+// on each individual day of the week.
+
 export default class ExerciseListNav extends Component {
   static contextType = WorkoutsContext;
   render() {
     const { weekdays = [] } = this.context;
-    console.log(weekdays);
 
     return (
       <div className="ExerciseListNav">

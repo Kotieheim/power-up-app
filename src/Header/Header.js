@@ -37,8 +37,12 @@ export class Header extends Component {
             ? this.renderLogoutLink()
             : this.renderLoginLink()}
         </nav>
-        <p className="Header_saying">
-          View all workouts logged, or sort by days of the week!
+
+        <p className="Header_saying_1">
+          Must be logged in to view or add workouts. Visit Login page{" "}
+          <Link to="/login">Here</Link> to use a dummy login or as a returning
+          user. Attempt to add workout without being logged in will redirect to
+          login page
         </p>
       </div>
     );

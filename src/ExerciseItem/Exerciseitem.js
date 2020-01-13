@@ -5,6 +5,10 @@ import PropTypes from "prop-types";
 import WorkoutsContext from "../WorkoutsContext";
 import "./Exerciseitem.css";
 import Moment from "moment";
+
+// Individual exercises that are listed out on home page, are
+// clickable to see full exercise log.
+
 class Exerciseitem extends Component {
   static defaultProps = {
     onDeleteWorkout: () => {}
@@ -14,7 +18,6 @@ class Exerciseitem extends Component {
   handleClickDelete = e => {
     e.preventDefault();
     const workoutId = this.props.id;
-    console.log(workoutId);
 
     fetch(`${config.API_ENDPOINT}/workouts/${workoutId}`, {
       method: "DELETE",
@@ -24,7 +27,6 @@ class Exerciseitem extends Component {
       }
     })
       .then(res => {
-        console.log(res, workoutId);
         if (!res.ok) {
           return res.then(err => Promise.reject(err));
         }
