@@ -8,7 +8,7 @@
 
 a RESTful API made using Express.js
 
-[Server Source Code]([Api Repo](https://github.com/Kotieheim/power-up-app-server))
+[Api Repo](https://github.com/Kotieheim/power-up-app-server)
 
 # Screenshots
 
